@@ -6,11 +6,16 @@
 Welcome to UAI-PINNs's documentation!
 =====================================
 
-UAI-PINNs has its documentation hosted on Read the Docs.
+User guide
+----------
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+  :maxdepth: 2
+  
+  deepxde
+  horovod
+  sysadmin
+
 
 
 
