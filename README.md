@@ -7,8 +7,8 @@
 **Documentation**: [ReadTheDocs](https://easyhpc.readthedocs.io)
 
 
-Documentation on HPC and Open Source collaboration for HPC simulations. This project is intended to allow fast learning of HPC simulations with Python. 
-It includes introduction and tutorial to:
+Documentation on HPC and Open Source collaboration for HPC simulations. This project is intended to allow fast learning of HPC with Python. 
+It includes:
 
 -  Github usage
 -  Collaborative code development
