@@ -1,19 +1,19 @@
 GitHub
 ======
 
-How to collaborate to a repository such as EasyHPC? If you want to send Pull Requests to open source directories, you have to follow these steps:
+How to collaborate to a repository such as `EasyHPC <https://github.com/pescap/EasyHPC>`_? If you want to send Pull Requests to open source directories, you have to follow these steps:
 
 Fork the repository to your GitHub account
-------
+------------------------------------------
 
-- Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_.
+- Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_;
+ 
+- Click on the ``Fork`` button on the top-right hand corner of the window;
 
-- Click on the ``Fork`` button on the top-right hand corner of the window.
-  
-- Choose where you want to fork EasyHPC.
+- Choose where you want to fork EasyHPC;
   
 Work locally on the forked repository
-------
+-------------------------------------
 
 Now that you have forked the repository, you will clone it locally on your computer.
 
@@ -38,7 +38,7 @@ https://github.com/your_username/EasyHPC/
 Now, you are ready to work on this branch, to make all the changes that you want to the code.  
 
 Push to the main repository
-------  	 
+---------------------------  	 
 
 If you want to merge your changes to the original ``EasyHPC``, go to back to your forked page, e.g.: ::
 
@@ -54,7 +54,7 @@ Note: Before you submit a pull request:
    	$ pip install black
  	$ black my_code.py
 
-You're ready to collaborate to any Open-Source repository on GitHub!
+You're ready to collaborate to any Open-Source repository on GitHub! 
 
-
+If you want to go further with this documentation, go to the `CI/CD page <https://easyhpc.readthedocs.io/en/latest/github.html>`_.
 
