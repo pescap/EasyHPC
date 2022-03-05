@@ -1,4 +1,4 @@
-# easyHPC
+# EasyHPC
 Documentation on HPC and Open Source collaboration for HPC simulations. This project is intended to allow fast learning of HPC simulations with Python. 
 It includes introduction and tutorial to:
 - Github usage
