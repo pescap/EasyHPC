@@ -1,16 +1,16 @@
-Github
+GitHub
 ======
 
-How to collaborate to a repository such as easyHPC? If you want to send PR to open source directories, you have to follow these steps:
+How to collaborate to a repository such as EasyHPC? If you want to send Pull Requests to open source directories, you have to follow these steps:
 
 Fork the repository to your GitHub account
 ------
 
-- Go to the easyHPC GitHub directory `(click here) <https://github.com/pescap/easyHPC>`_.
+- Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_.
 
 - Click on the ``Fork`` button on the top-right hand corner of the window.
   
-- Choose where you want to fork easyHPC.
+- Choose where you want to fork EasyHPC.
   
 Work locally on the forked repository
 ------
@@ -19,7 +19,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 - Go to the forked GitHub directory webpage. It should be something like: ::
 
-https://github.com/your_username/easyHPC/
+https://github.com/your_username/EasyHPC/
 
 - Click on the ``clone`` button and copy the directory URL;
   
@@ -40,9 +40,9 @@ Now, you are ready to work on this branch, to make all the changes that you want
 Push to the main repository
 ------  	 
 
-If you want to merge your changes to the original ``easyHPC``, go to back to your forked page, e.g.: ::
+If you want to merge your changes to the original ``EasyHPC``, go to back to your forked page, e.g.: ::
 
-https://github.com/your_username/easyHPC/
+https://github.com/your_username/EasyHPC/
 
 Check compatibility and propose a Pull Request. 
 
