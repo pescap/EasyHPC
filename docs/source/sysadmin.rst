@@ -9,6 +9,29 @@ Here goes a short list of useful commands::
 $ ls # Show current directory
 $ cd # Go to the root directory
 $ pwd # Show the current path
+$ htop # Check memory usage and processes
+
+Users management (sudo)
+-----------------------
+
+Create a new user with username ``user``::
+
+$ sudo adduser user
+$ sudo passwd -e user # user will be asked to set new password
+
+Then, one can define groups privileges. For example, to create an ``anaconda`` group that gives read access to path ``/opt/conda``::
+
+$ sudo groupadd anaconda
+$ sudo chgrp -R anaconda /opt/conda
+$ sudo usermod -aG docker user
+
+List sudoers: ::
+
+$ grep -Po '^sudo.+:\K.*$' /etc/group
+
+Add or remove ``user`` to sudo::
+
+$ sudo usermod -aG sudo user
 
 
 Cluster and Jupyter Notebook
@@ -54,3 +77,4 @@ Docker
 To run a the DeepXDE container, run: ::
 
 $ nvidia-docker run -v $(pwd):/root/shared -w "/root/shared" -p 8888:8888 pescapil/deepxde:latest
+ 

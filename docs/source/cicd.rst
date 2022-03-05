@@ -31,6 +31,3 @@ Branch protection rules
 To add rules to the pull requests and commits, you can set branch protection rules.
 
 To do so, go to your git repository and click on ``Settings``, and then ``Branches``. Define your custom Branch protection rules.
-
-
-Now that you know how to set up git repositories and ensure their continuous integration go to the `System Administration page <https://easyhpc.readthedocs.io/en/latest/sysadmin.html>`_.

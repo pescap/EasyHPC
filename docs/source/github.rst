@@ -55,6 +55,3 @@ Note: Before you submit a pull request:
  	$ black my_code.py
 
 You're ready to collaborate to any Open-Source repository on GitHub! 
-
-If you want to go further with this documentation, go to the `CI/CD page <https://easyhpc.readthedocs.io/en/latest/github.html>`_.
-

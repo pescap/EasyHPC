@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'FastHPC'
+project = 'EasyHPC'
 copyright = '2022, pescap'
 author = 'pescap'
 
@@ -76,7 +76,7 @@ sys.path.insert(0, os.path.abspath('.'))
 sys.path.insert(0, os.path.abspath('../'))
 #sys.path.insert(0, os.path.abspath('../..'))
 
-htmlhelp_basename = "FastHPCdoc"
+htmlhelp_basename = "EasyHPCdoc"
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -96,7 +96,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    ("index", "fastHPC.tex", "fastHPC Documentation", "pescap", "manual")
+    ("index", "EasyHPC.tex", "EasyHPC Documentation", "pescap", "manual")
 ]
 
 
