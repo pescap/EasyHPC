@@ -1,6 +1,7 @@
 # EasyHPC
 Documentation on HPC and Open Source collaboration for HPC simulations. This project is intended to allow fast learning of HPC simulations with Python. 
 It includes introduction and tutorial to:
+
 - Github usage
 - Collaborative code development
 - CI/CD
@@ -14,5 +15,4 @@ It includes introduction and tutorial to:
 
 This code was created for a Undergraduate research course at Universidad Adolfo Ibáñez, Santiago, Chile.
 
-
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2cb491b027e44d519e34ffd5116ec902)](https://www.codacy.com/gh/pescap/UAI-PINNs/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pescap/UAI-PINNs&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2cb491b027e44d519e34ffd5116ec902)](https://www.codacy.com/gh/pescap/EasyHPC/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pescap/EasyHPC&amp;utm_campaign=Badge_Grade)
