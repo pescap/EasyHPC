@@ -3,6 +3,14 @@ GitHub
 
 How to collaborate to a repository such as `EasyHPC <https://github.com/pescap/EasyHPC>`_? If you want to send Pull Requests to open source directories, you have to follow these steps:
 
+Clone the repository
+--------------------
+
+- Run: ::
+$ git clone https://github.com/pescap/EasyHPC
+$ cd EasyHPC
+$ pip install -r requirements.txt
+
 Fork the repository to your GitHub account
 ------------------------------------------
 
