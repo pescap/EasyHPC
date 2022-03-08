@@ -7,9 +7,10 @@ Clone the repository
 --------------------
 
 - Run: ::
-$ git clone https://github.com/pescap/EasyHPC
-$ cd EasyHPC
-$ pip install -r requirements.txt
+
+        $ git clone https://github.com/pescap/EasyHPC
+        $ cd EasyHPC
+        $ pip install -r requirements.txt
 
 Fork the repository to your GitHub account
 ------------------------------------------
