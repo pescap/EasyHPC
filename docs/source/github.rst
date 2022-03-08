@@ -48,6 +48,11 @@ Now, you are ready to work on this branch, to make all the changes that you want
 Push to the main repository
 ---------------------------  	 
 
+Once your changes are done, you can commit and push them to the remote branch: ::
+
+$ git commit -a -m "message about what you added"
+$ git push origin neo 
+
 If you want to merge your changes to the original ``EasyHPC``, go to back to your forked page, e.g.: ::
 
  $ https://github.com/your_username/EasyHPC/
