@@ -50,7 +50,7 @@ Push to the main repository
 
 If you want to merge your changes to the original ``EasyHPC``, go to back to your forked page, e.g.: ::
 
-https://github.com/your_username/EasyHPC/
+ $ https://github.com/your_username/EasyHPC/
 
 Check compatibility and propose a Pull Request. 
 
