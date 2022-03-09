@@ -7,10 +7,12 @@ Create an issue
 ---------------
 This is very helpful to continue suggesting changes or enhancementes to the code.
 
-- Go to the `Issues <https://github.com/pescap/EasyHPC/issues>`_ section of the GitHub repository.
-- Click on ``New issue``.
-- Write a **title** of the issue and in the **write** section describe it.
+- Go to the `issues <https://github.com/pescap/EasyHPC/issues>`_ section of the GitHub repository.
+- Click on ``New issue`` button.
+- Write a **title** for the issue and in the **write** section describe it.
 - Add **labels** and **assignees**, you can do this in the right panel when creating an issue.
+
+With this, you successfully added a new issue that every other collaborator can see and comment.
 
 Clone the repository
 --------------------
