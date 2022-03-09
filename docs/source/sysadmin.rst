@@ -4,12 +4,26 @@ System Adminisitration
 Linux command line for beginners
 --------------------------------
 
-Here goes a short list of useful commands::
+Here goes a short list of useful commands:
+
+File commands::
+~~~~~~~~~~
 
 $ ls # Show current directory
 $ cd # Go to the root directory
+$ cd example_directory # Changing to another directory 
+$ cd - # Go back to the previous directory
+$ mkdir newproject # Create a new directory 
+$ rm file  # Delete file
+$ rm -r trashfolder # Delete directory
 $ pwd # Show the current path
+
+System info::
+~~~~~~~~~~
+
 $ htop # Check memory usage and processes
+$ df # Show disk usage
+$ date # Show the current date and time
 
 Users management (sudo)
 -----------------------
