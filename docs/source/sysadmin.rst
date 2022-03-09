@@ -1,4 +1,4 @@
-System Adminisitration
+System Administration
 ======================
 
 Linux command line for beginners
