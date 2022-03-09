@@ -3,6 +3,15 @@ GitHub
 
 How to collaborate to a repository such as `EasyHPC <https://github.com/pescap/EasyHPC>`_? If you want to send Pull Requests to open source directories, you have to follow these steps:
 
+Create an issue
+---------------
+This is very helpful to continue suggesting changes or enhancementes to the code.
+
+- Go to the `Issues <https://github.com/pescap/EasyHPC/issues>`_ section of the GitHub repository.
+- Click on ``New issue``.
+- Write a **title** of the issue and in the **write** section describe it.
+- Add **labels** and **assignees**, you can do this in the right panel when creating an issue.
+
 Clone the repository
 --------------------
 
@@ -28,7 +37,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 - Go to the forked GitHub directory webpage. It should be something like: ::
 
-https://github.com/your_username/EasyHPC/
+	https://github.com/your_username/EasyHPC/
 
 - Click on the ``clone`` button and copy the directory URL;
   
