@@ -6,8 +6,8 @@ Linux command line for beginners
 
 Here goes a short list of useful commands:
 
-File commands::
-~~~~~~~~~~
+**File commands**::
+
 
 $ ls # Show current directory
 $ cd # Go to the root directory
@@ -18,8 +18,8 @@ $ rm file  # Delete file
 $ rm -r trashfolder # Delete directory
 $ pwd # Show the current path
 
-System info::
-~~~~~~~~~~
+**System info**::
+
 
 $ htop # Check memory usage and processes
 $ df # Show disk usage
