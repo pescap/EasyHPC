@@ -5,7 +5,7 @@ How to collaborate to a repository such as `EasyHPC <https://github.com/pescap/E
 
 Create an issue
 ---------------
-This is very helpful to continue suggesting changes or enhancementes to the code.
+To propose changes or enhancements to the code, it is preferable to use the Issues section.
 
 - Go to the `issues <https://github.com/pescap/EasyHPC/issues>`_ section of the GitHub repository.
 - Click on ``New issue`` button.
@@ -14,23 +14,13 @@ This is very helpful to continue suggesting changes or enhancementes to the code
 
 With this, you successfully added a new issue that every other collaborator can see and comment.
 
-Clone the repository
---------------------
-
-- Run: ::
-
-        $ git clone https://github.com/pescap/EasyHPC
-        $ cd EasyHPC
-        $ pip install -r requirements.txt
 
 Fork the repository to your GitHub account
 ------------------------------------------
 
-- Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_;
- 
-- Click on the ``Fork`` button on the top-right hand corner of the window;
-
-- Choose where you want to fork EasyHPC;
+- Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_.
+- Click on the ``Fork`` button on the top-right hand corner of the window.
+- Choose where you want to fork EasyHPC.
   
 Work locally on the forked repository
 -------------------------------------
@@ -41,7 +31,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 	https://github.com/your_username/EasyHPC/
 
-- Click on the ``clone`` button and copy the directory URL;
+- Click on the ``clone`` button and copy the directory URL.
   
 - In your terminal type::
 
@@ -57,10 +47,48 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 Now, you are ready to work on this branch, to make all the changes that you want to the code.  
 
-Push to the main repository
----------------------------  	 
+How to keep your local repository up to date
+--------------------------------------------
 
-Once your changes are done, you can commit and push them to the remote branch: ::
+Configure a remote.
+   
+1. List the current remote repository for your fork: ::
+
+	$ git remote -v
+	> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+	> origin https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+
+2. Specify a new remote upstream: ::
+
+	$ git remote add upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git
+
+3. Verify the new upstream: ::
+
+	$ git remote -v
+	> origin   https://github.com/YOUR_USERNAME/YOUR_FORK.git (fetch)
+	> origin   https://github.com/YOUR_USERNAME/YOUR_FORK.git (push)
+	> upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (fetch)
+	> upstream https://github.com/ORIGINAL_OWNER/ORIGINAL_REPOSITORY.git (push)
+
+Sync your forked repository with the original (Forked repo. webpage).
+
+1. Go to the main page of your forked repository.
+2. **(optional)** Click on the ``main`` button to change the **branch** to the one you are working with.
+3. Click on the ``Fetch upstream`` button.
+4. If you want to see and compare which changes have been made since your last pull, you can click on ``Compare``. Then click on ``Fetch and merge``.
+
+**Pull** changes from your **forked** repository: ::
+
+	$ git pull
+
+In case you haven't synced your forked repository, you cand do this: ::
+
+	$ git pull upstream
+
+Push to the main/forked repository
+----------------------------------	 
+
+Once your changes are done, you can commit and push them to the remote branch ``neo``: ::
 
 $ git commit -a -m "message about what you added"
 $ git push origin neo 
@@ -73,7 +101,7 @@ Check compatibility and propose a Pull Request.
 
 Note: Before you submit a pull request: 
 
-- Verify that your forked version is up to date with the original one;
+- Verify that your forked version is up to date with the original one.
 - Remember to apply `black <https://pypi.org/project/black/>`_ to your Python code. Black allows to format Python code. To install Black and apply it to a ``my_code.py`` script: ::
 
    	$ pip install black
