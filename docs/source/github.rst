@@ -107,4 +107,4 @@ Note: Before you submit a pull request:
    	$ pip install black
  	$ black my_code.py
 
-You're ready to collaborate to any Open-Source repository on GitHub! 
+You're ready to collaborate to any Open-Source repository on GitHub!
