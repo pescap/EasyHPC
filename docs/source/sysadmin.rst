@@ -37,7 +37,7 @@ Then, one can define groups privileges. For example, to create an ``anaconda`` g
 
 $ sudo groupadd anaconda
 $ sudo chgrp -R anaconda /opt/conda
-$ sudo usermod -aG docker user
+$ sudo usermod -aG anaconda user
 
 List sudoers: ::
 
@@ -47,13 +47,23 @@ Add or remove ``user`` to sudo::
 
 $ sudo usermod -aG sudo user
 
+Install Oh My Zsh
+-----------------
+
+Run: ::
+
+ $ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 Cluster and Jupyter Notebook
 ----------------------------
 
-Connect to ssh to the server, enabling port forwarding with port ``8888`` using::
+Connect via ssh to ``ip_address`` with username ``user``: ::
 
-$ ssh -L 8888:localhost:8888 your_username@server_ip_address
+ $ ssh user@ip_address
+
+Connect via ssh to the server, enabling port forwarding with port ``8888`` using::
+
+$ ssh -L 8888:localhost:8888 user@ip_address
 
 Once logged into the server, simply run::
 
@@ -88,7 +98,10 @@ $ CUDA_VISIBLE_DEVICES="" python dl.py
 Docker
 ------
  
-To run a the DeepXDE container, run: ::
+To run a DeepXDE container, run: ::
 
 $ nvidia-docker run -v $(pwd):/root/shared -w "/root/shared" -p 8888:8888 pescapil/deepxde:latest
  
+To use a forked version of DeepXDE from inside the Docker, open a Terminal windows and set the ``PYTHONPATH`` adequately using::
+
+$ export PYTHONPATH=$PYTHONPATH:path_to_deepxde
