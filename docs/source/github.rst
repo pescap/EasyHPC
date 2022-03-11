@@ -116,3 +116,5 @@ How to link an issue with a pull request
 2. Click on the pull request that you would like to link to an issue.
 3. In the right panel, ``Development`` section click |:gear:|.
 4. Select the issue you want to link.
+
+**Note**: You can do this every time you are about to present a pull request to the upstream repository.
