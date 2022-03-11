@@ -109,7 +109,7 @@ Check compatibility and propose a Pull Request.
 
 You're ready to collaborate to any Open-Source repository on GitHub!
 
-How to link an issue with a pull request
+How to manually link an issue with a pull request
 ----------------------------------------
 
 1. On the upstream GitHub repository click on ``Pull requests``.
