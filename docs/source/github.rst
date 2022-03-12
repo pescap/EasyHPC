@@ -81,7 +81,7 @@ Sync your forked repository with the original (Forked repo. webpage).
 
 	$ git pull
 
-In case you haven't synced your forked repository, you cand do this: ::
+In case you haven't synced your forked repository, you can do this: ::
 
 	$ git pull upstream
 
@@ -93,13 +93,13 @@ Once your changes are done, you can commit and push them to the remote branch ``
 $ git commit -a -m "message about what you added"
 $ git push origin neo 
 
-If you want to merge your changes to the original ``EasyHPC``, go to back to your forked page, e.g.: ::
+If you want to merge your changes to the original ``EasyHPC``, go back to your forked page, e.g.: ::
 
  $ https://github.com/your_username/EasyHPC/
 
 Check compatibility and propose a Pull Request. 
 
-Note: Before you submit a pull request: 
+**Note**: Before you submit a pull request: 
 
 - Verify that your forked version is up to date with the original one.
 - Remember to apply `black <https://pypi.org/project/black/>`_ to your Python code. Black allows to format Python code. To install Black and apply it to a ``my_code.py`` script: ::
@@ -108,3 +108,13 @@ Note: Before you submit a pull request:
  	$ black my_code.py
 
 You're ready to collaborate to any Open-Source repository on GitHub!
+
+How to manually link an issue with a pull request
+----------------------------------------
+
+1. On the upstream GitHub repository click on ``Pull requests``.
+2. Click on the pull request that you would like to link to an issue.
+3. In the right panel, ``Development`` section click |:gear:|.
+4. Select the issue you want to link.
+
+**Note**: You can do this every time you are about to present a pull request to the upstream repository.
