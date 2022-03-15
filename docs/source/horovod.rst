@@ -1,52 +1,5 @@
-Python Programming
-==================
-
-Anaconda
---------
-Conda is a package and environment management system, allowing to easily find and install packages. It is very useful to work with different Python packages/libraries versions, and to avoid compatibility issues.
-
-1. Installing Anaconda.
-    Unix:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_.
-       2. Run::
-
-            $ bash <name of file downloaded>.sh
-
-       3. Follow the instructions on the installer screens.
-       4. **Remember** to accept, at the end of everything, adding **Conda** to **PATH**.
-       5. Restart your terminal window.
-
-    MacOS:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_.
-       2. Open the ``.pkg`` file.
-       3. Follow the instructions on the installer screens.
-       4. **Remember** to accept, at the end of everything, adding **Conda** to **PATH**.
-       5. Restart the terminal window.
-
-    **Note**: If conda command doesn't work, run::
-        
-        $ conda init
-
-2. Creating/Managing your environments.
-    1. To create an environment with a specific version::
-        
-        $ conda create -n new_env python=<version_number>
-
-    2. Checking the list of your environments::
-        
-        $ conda env list
-
-    3. Activating/Deactivating an environment::
-        
-        $ conda activate/deactivate new_env
-
-    4. Now you can install packages with either the command pip or conda.
-
-- Remember that any packages/libraries installed on a specific conda environment are retained there, environments do not share installed packages.
-- If you want to know more about Anaconda, you can go to their official documentation `website <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
-
 Horovod
--------
+=======
 
 Example of script using horovod::
 
