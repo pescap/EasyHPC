@@ -32,7 +32,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 - Click on the ``clone`` button and copy the directory URL.
   
-- In your terminal type::
+- In your terminal type(This step just needs to be done when you don´t have the local repo of the forked repository)::
 
 	$ git clone directory_url
 
@@ -76,16 +76,26 @@ Sync your forked repository with the original (Forked repo. webpage).
 3. Click on the ``Fetch upstream`` button.
 4. If you want to see and compare which changes have been made since your last pull, you can click on ``Compare``. Then click on ``Fetch and merge``.
 
-**Pull** changes from your **forked** repository: ::
+Then, you can either **fetch** your forked repo into the local repo using: ::
 
-	$ git pull
+$ git fetch origin <branch_name>
+
+Or, you can **Pull** changes from your **forked** repository: ::
+
+$ git pull
 
 In case you haven't synced your forked repository, you can do this: ::
 
-	$ git pull upstream
+$ git pull upstream
+
+**Warning**: You will lose your work in the working space if you pull any repository before you commit into the local repo.
 
 Push to the main/forked repository
-----------------------------------	 
+----------------------------------	
+
+Remember that if you added files to your directory in the working space, those files must be added before commiting: ::
+
+$ git add <file_name>
 
 Once your changes are done, you can commit and push them to the remote branch ``neo``: ::
 
@@ -94,7 +104,7 @@ $ git push origin neo
 
 If you want to merge your changes to the original ``EasyHPC``, go back to your forked page, e.g.: ::
 
- $ https://github.com/your_username/EasyHPC/
+ https://github.com/your_username/EasyHPC/
 
 Check compatibility and propose a Pull Request. 
 
