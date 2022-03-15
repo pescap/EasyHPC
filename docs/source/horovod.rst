@@ -1,8 +1,8 @@
 Python Programming
 ==================
 
-Conda environments
-------------------
+Anaconda
+--------
 To help you work with differents versions of Python and different packages/libraries to avoid compatibility issues.
 
 1. Installing Anaconda.
