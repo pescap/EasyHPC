@@ -32,7 +32,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 - Click on the ``clone`` button and copy the directory URL.
   
-- In your terminal type(This step just needs to be done when you don´t have the local repo of the forked repository)::
+- In your terminal type (This step just needs to be done when you don´t have the local repo of the forked repository)::
 
 	$ git clone directory_url
 
