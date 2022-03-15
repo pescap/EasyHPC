@@ -42,8 +42,8 @@ To help you work with differents versions of Python and different packages/libra
 
     4. Now you can install packages with either the command pip or conda.
 
-Remember that any packages/libraries installed on a specific conda environment are retained there, environments do not share installed packages.
-    
+- Remember that any packages/libraries installed on a specific conda environment are retained there, environments do not share installed packages.
+- If you want to know more about Anaconda, you can go to their official documentation `website <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
 
 Horovod
 -------
