@@ -112,7 +112,9 @@ Conda is a package and environment management system, allowing to easily find an
 
 1. Installing Anaconda.
     Unix:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_.
+       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_ ::
+
+            $ curl -O <url of conda installer>
        2. Run::
 
             $ bash <name of file downloaded>.sh
