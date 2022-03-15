@@ -3,7 +3,7 @@ Python Programming
 
 Anaconda
 --------
-To help you work with differents versions of Python and different packages/libraries to avoid compatibility issues.
+Conda is a package and environment management system, allowing to easily find and install packages. It is very useful to work with different Python packages/libraries versions, and to avoid compatibility issues.
 
 1. Installing Anaconda.
     Unix:
