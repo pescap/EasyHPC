@@ -70,10 +70,10 @@ structure is determined from the succession of headings. However, it is better t
 **Internal and External Links**
 
 
-In Sphinx, you have 3 type of links:
+In Sphinx, you have 2 type of links:
     #. External links (http-like)
     #. Implicit links to title
-    #. Explicit links to user-defined label (e.g., to refer to external titles).
+    
 
 
 **External links**
