@@ -17,12 +17,12 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'EasyHPC'
-copyright = '2022, pescap'
-author = 'pescap'
+project = "EasyHPC"
+copyright = "2022, pescap"
+author = "pescap"
 
 # The full version, including alpha/beta/rc tags
-release = '0.1' 
+release = "0.1"
 
 
 # -- General configuration ---------------------------------------------------
@@ -35,11 +35,11 @@ extensions = [
     "sphinx.ext.mathjax",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
-    "sphinxemoji.sphinxemoji"
+    "sphinxemoji.sphinxemoji",
 ]
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
@@ -60,22 +60,20 @@ pygments_style = "sphinx"
 
 html_theme = "sphinx_rtd_theme"
 
-html_theme_options = {
-    "rightsidebar": "true",
-    "relbarbgcolor": "black"
-}
+html_theme_options = {"rightsidebar": "true", "relbarbgcolor": "black"}
 
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = []#['_static']
+html_static_path = []  # ['_static']
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
-sys.path.insert(0, os.path.abspath('../'))
-#sys.path.insert(0, os.path.abspath('../..'))
+
+sys.path.insert(0, os.path.abspath("."))
+sys.path.insert(0, os.path.abspath("../"))
+# sys.path.insert(0, os.path.abspath('../..'))
 
 htmlhelp_basename = "EasyHPCdoc"
 
@@ -99,6 +97,4 @@ latex_elements = {
 latex_documents = [
     ("index", "EasyHPC.tex", "EasyHPC Documentation", "pescap", "manual")
 ]
-
-
 

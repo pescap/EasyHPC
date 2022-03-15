@@ -24,7 +24,6 @@ Fork the repository to your GitHub account
   
 Work locally on the forked repository
 -------------------------------------
-
 Now that you have forked the repository, you will clone it locally on your computer.
 
 - Go to the forked GitHub directory webpage. It should be something like: ::
@@ -50,7 +49,7 @@ Now, you are ready to work on this branch, to make all the changes that you want
 How to keep your local repository up to date
 --------------------------------------------
 
-Configure a remote.
+Configure a remote:
    
 1. List the current remote repository for your fork: ::
 
@@ -110,7 +109,7 @@ Check compatibility and propose a Pull Request.
 You're ready to collaborate to any Open-Source repository on GitHub!
 
 How to manually link an issue with a pull request
-----------------------------------------
+-------------------------------------------------
 
 1. On the upstream GitHub repository click on ``Pull requests``.
 2. Click on the pull request that you would like to link to an issue.
@@ -118,3 +117,15 @@ How to manually link an issue with a pull request
 4. Select the issue you want to link.
 
 **Note**: You can do this every time you are about to present a pull request to the upstream repository.
+
+Milestones
+----------
+To better manage/see due dates, completion percentage, open/closed issues and pull requests associated with a specific part/characteristic of the project. 
+
+1. Go to the main page of the original repository.
+2. Click on ``Issues`` or ``Pull requests``.
+3. Next to the ``Labels`` button, click ``Milestones``.
+4. You can either **create** a milestone or edit an existing milestone.
+5. Type the milestone's title and description.
+
+**Note**: When you delete milestones, issues and pull requests are not affected.
