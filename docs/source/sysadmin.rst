@@ -112,25 +112,32 @@ Conda is a package and environment management system, allowing to easily find an
 
 1. Installing Anaconda.
     Unix:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_ ::
+       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_ (copy the link of download)::
 
-            $ curl -O <url of conda installer>
+            $ curl -O donwload_link
+
        2. Run::
 
             $ bash <name of file downloaded>.sh
 
        3. Follow the instructions on the installer screens.
-       4. **Remember** to accept, at the end of everything, adding **Conda** to **PATH**.
+       4. **Remember** to type **yes**, at the end of everything, this will add **Conda** to **PATH**.
        5. Restart your terminal window.
 
     MacOS:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_.
-       2. Open the ``.pkg`` file.
+       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_ (copy the link of download)::
+            
+            $ curl -O donwload_link
+            
+       2. Run::
+
+            $ bash <name of file downloaded>.sh
+
        3. Follow the instructions on the installer screens.
-       4. **Remember** to accept, at the end of everything, adding **Conda** to **PATH**.
+       4. **Remember** to type **yes**, at the end of everything, this will add **Conda** to **PATH**.
        5. Restart the terminal window.
 
-    **Note**: If conda command doesn't work, run::
+    **Note**: If conda command doesn't work (skipping step 4), run::
         
         $ conda init
 
@@ -147,7 +154,11 @@ Conda is a package and environment management system, allowing to easily find an
         
         $ conda activate/deactivate new_env
 
-    4. Now you can install packages with either the command pip or conda.
+    4. Install a package::
+    
+        $ conda install name_of_the_package
+        or
+        $ pip install name_of_the_package
 
 - Remember that any packages/libraries installed on a specific conda environment are retained there, environments do not share installed packages.
 - If you want to know more about Anaconda, you can go to their official documentation `website <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
@@ -157,8 +168,8 @@ Docker
  
 To run a DeepXDE container, run: ::
 
-$ nvidia-docker run -v $(pwd):/root/shared -w "/root/shared" -p 8888:8888 pescapil/deepxde:latest
+    $ nvidia-docker run -v $(pwd):/root/shared -w "/root/shared" -p 8888:8888 pescapil/deepxde:latest
  
 To use a forked version of DeepXDE from inside the Docker, open a Terminal windows and set the ``PYTHONPATH`` adequately using::
 
-$ export PYTHONPATH=$PYTHONPATH:path_to_deepxde
+    $ export PYTHONPATH=$PYTHONPATH:path_to_deepxde
