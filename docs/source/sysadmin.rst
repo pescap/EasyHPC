@@ -120,7 +120,7 @@ Conda is a package and environment management system, allowing to easily find an
 
             $ bash <name of file downloaded>.sh
 
-       3. Follow the instructions on the installer screens.
+       3. Follow the instructions on the installer screen.
        4. **Remember** to type **yes**, at the end of everything, this will add **Conda** to **PATH**.
        5. Restart your terminal window.
 
@@ -133,7 +133,7 @@ Conda is a package and environment management system, allowing to easily find an
 
             $ bash <name of file downloaded>.sh
 
-       3. Follow the instructions on the installer screens.
+       3. Follow the instructions on the installer screen.
        4. **Remember** to type **yes**, at the end of everything, this will add **Conda** to **PATH**.
        5. Restart the terminal window.
 

@@ -6,8 +6,7 @@ To do. Explain the theory for inverse problems, and add references.
 
 Solving a Time-independent PDE: 
 -------------------------------
-This mathematical example is commonly known, 
-but for the original solution in Python you can go to the 
+For the original solution you can go to the 
 `DeepXDE documentation <https://deepxde.readthedocs.io/en/latest/demos/pinn_forward/helmholtz.2d.dirichlet.html>`_.
 
 Given a wavenumber: :math:`k_{0}=2\pi n` with :math:`n=2`.
