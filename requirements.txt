@@ -1,5 +1,4 @@
 sphinx
 sphinx_rtd_theme
 numpy
-importlib-metadata
 sphinxemoji
