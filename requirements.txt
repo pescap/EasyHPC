@@ -1,4 +1,2 @@
 sphinx
 sphinx_rtd_theme
-setuptools==60.9.3
-sphinxemoji
