@@ -1,4 +1,4 @@
 sphinx
 sphinx_rtd_theme
-importlib-metadata==4.11.2
+setuptools==60.9.3
 sphinxemoji
