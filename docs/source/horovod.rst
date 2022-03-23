@@ -16,7 +16,33 @@ Towards Data Science: `Distributed Deep Learning with Horovod <https://towardsda
 Tutorials
 ---------
 
-Tutorials for Horovod: ::
+Some tutorials for Horovod are available here: ::
 
-$ git clone https://github.com/horovod/tutorials
+	$ git clone https://github.com/horovod/tutorials
 
+
+Run Horovod examples on a GPU cluster
+-------------------------------------
+
+The ``horovod`` Docker image comes with examples. Run ::
+
+	$ nvidia-docker run -it horovod/horovod
+
+The `examples` directory comes with an example directory per backend
+
+::
+
+    examples
+    ├── adasum
+    ├── elastic
+    ├── keras
+    ├── ...
+    ├── tensorflow
+    └── tensorflow2
+
+If you choose the `tensorflow2` backend ::
+
+	$ cd tensorflow2
+	$ CUDA_VISIBLE_DEVICES=0,1,2,3 horovodrun -np 4 -H localhost:4 python tensorflow2_synthetic_benchmark.py
+
+If the terminal flushes ``stddiag: Read -1``, refer to this `issue <https://github.com/horovod/horovod/issues/503>`_ to remove the warning.
