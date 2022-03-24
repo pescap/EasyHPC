@@ -18,6 +18,7 @@ With this, you successfully added a new issue that every other collaborator can 
 Fork the repository to your GitHub account
 ------------------------------------------
 
+
 - Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_.
 - Click on the ``Fork`` button on the top-right hand corner of the window.
 - Choose where you want to fork EasyHPC.
