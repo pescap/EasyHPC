@@ -179,4 +179,5 @@ Workflows are stored in `.github/workflow <https://github.com/pescap/EasyHPC/tre
 	          days-before-pr-close: -1
 	          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
+
 This workflow stales inactive issues after 7 days, and closes them 7 days later. The code is issued from `this link <https://docs.github.com/en/github-ae@latest/actions/managing-issues-and-pull-requests/closing-inactive-issues>`_.
