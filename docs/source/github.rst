@@ -19,7 +19,7 @@ Fork the repository to your GitHub account
 ------------------------------------------
 
 
-- Go to the EasyHPC GitHub directory `(click here) <https://github.com/pescap/EasyHPC>`_.
+- Go to the EasyHPC GitHub directory (`click here <https://github.com/pescap/EasyHPC>`_).
 - Click on the ``Fork`` button on the top-right hand corner of the window.
 - Choose where you want to fork EasyHPC.
   
@@ -100,8 +100,17 @@ $ git add <file_name>
 
 Once your changes are done, you can commit and push them to the remote branch ``neo``: ::
 
-$ git commit -a -m "message about what you added"
-$ git push origin neo 
+	$ git commit -a -m "message about what you added"
+	$ git push origin neo 
+
+Notice that you can link the pull request to an issue using a keyword (see `here <https://docs.github.com/es/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue>`_).
+
+For example, if you commit solves issue number `#90`, you can run::
+
+	$ git commit -a -m "fixes #90"
+	$ git push origin neo
+
+This will automatically close issue `#90`.
 
 If you want to merge your changes to the original ``EasyHPC``, go back to your forked page, e.g.: ::
 
@@ -140,3 +149,34 @@ To better manage/see due dates, completion percentage, open/closed issues and pu
 5. Type the milestone's title and description.
 
 **Note**: When you delete milestones, issues and pull requests are not affected.
+
+GitHub Actions
+--------------
+`GitHub Actions <https://github.com/features/actions>`_ allows to automate workflows. They can be accessed via the ``Actions`` in the home GitHub repository (web).
+
+Workflows are stored in `.github/workflow <https://github.com/pescap/EasyHPC/tree/main/.github/workflows>`_. A simple workflow was created in `issues.yml <https://github.com/pescap/EasyHPC/blob/main/.github/workflows/issues.yml>`_. It follows the general structure for workflows: ::
+
+	name: Close inactive issues #name for the workflow
+	on: #when it is runned. It can be on schedule or via a manual trigger
+	  schedule:
+	    - cron: "30 1 * * *" #here, it runs every day
+
+	jobs: # each workflow in subdivised into jobs
+	  close-issues: #here, one job called close-issues
+	    runs-on: ubuntu-latest #on which machine it is runned
+	    permissions: #the permissiones for the workflow
+	      issues: write
+	      pull-requests: write
+	    steps:
+	      - uses: actions/stale@v3
+	        with:
+	          days-before-issue-stale: 7
+	          days-before-issue-close: 7
+	          stale-issue-label: "stale"
+	          stale-issue-message: "This issue is stale because it has been open for 7 days with no activity."
+	          close-issue-message: "This issue was closed because it has been inactive for 7 days since being marked as stale."
+	          days-before-pr-stale: -1
+	          days-before-pr-close: -1
+	          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+This workflow stales inactive issues after 7 days, and closes them 7 days later. The code is issued from `this link <https://docs.github.com/en/github-ae@latest/actions/managing-issues-and-pull-requests/closing-inactive-issues>`_.
