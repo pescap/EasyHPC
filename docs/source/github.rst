@@ -110,7 +110,7 @@ For example, if you commit solves issue number `#90`, you can run::
 	$ git commit -a -m "fixes #90"
 	$ git push origin neo
 
-This will automatically close issue `#90`.
+This will automatically close issue `#90`. You can also use ``resolves, fix, close``, etc... 
 
 If you want to merge your changes to the original ``EasyHPC``, go back to your forked page, e.g.: ::
 
