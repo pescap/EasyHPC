@@ -17,7 +17,7 @@ Install **TensorFlow** using the command line: ::
 $ pip install tensorflow  #Using pip as a installer
 $ conda install tensorflow #Using conda as a installer
 
-
+If you are using GPUs, you can install ``tensorflow-gpu`` rather than ``tensorflow``.
 The next step is to **install the DeepXDE library** with one of these commands: ::
 
 $ pip install deepxde #Using pip as installer
