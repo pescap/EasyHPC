@@ -15,7 +15,7 @@ To run **DeepXDE** on your local machine or a cluster, you need to install at le
 Install **TensorFlow** using the command line: ::
 
 $ pip install tensorflow  #Using pip as a installer
-$ conda install TensorFlow #Using conda as a installer
+$ conda install tensorflow #Using conda as a installer
 
 
 The next step is to **install the DeepXDE library** with one of these commands: ::
