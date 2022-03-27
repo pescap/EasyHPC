@@ -48,12 +48,7 @@ In order to write a title, you can either underline it or under and overline it.
     **********************
     and so on
 
-
-
-
-
 Two rules: 
-
   * If under and overline are used, their length must be identical
   * The length of the underline must be at least as long as the title itself
 
