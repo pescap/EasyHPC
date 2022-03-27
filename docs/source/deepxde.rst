@@ -12,7 +12,7 @@ Installation
 **Requirements**
 
 To run **DeepXDE** on your local machine or a cluster, you need to install at least one backend (for example, **TensorFlow**).
-In order to do that, first you need to install **TensorFlow** using the command line: ::
+Install **TensorFlow** using the command line: ::
 
 $ pip install tensorflow  #Using pip as a installer
 $ conda install TensorFlow #Using conda as a installer
