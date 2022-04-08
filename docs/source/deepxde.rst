@@ -6,8 +6,28 @@ Theory Behind Inverse Problems
 To do. Explain the theory for inverse problems, and add references.
 
 .. image:: ~Image/RedNeuronal.png
-https://www.overleaf.com/5389572137znnjcpqctqxj
 
+As shown in the figure, the layer of neurons is represented with a nonlinear transformation.
+
+In simple terms, a neural network is a function with the ability to learn to detect complex patterns.
+
+On this occasion, we will use this type of architecture to approach the nature of vector and scalar fields applied to
+physics.
+
+To optimize the model we need data. Different points in space-time with associated vectors belonging to our vector or scalar field.
+
+First, we will use the maximum likelihood method to define the optimization problem, which, under a series of assumptions, consists of minimizing the mean square error between the predictions and the values observed in the database.
+
+Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
+
+Third, we will use the backpropagation algorithm to calculate the evaluation in the gradient function of the function that measures the efficiency of the neural network (cost function).
+
+At each "epoch", the algorithm uses the backpropagation algorithm. And then with the gradient descent it varies its parameters until it reaches the optimal solution.
+
+
+
+Mathematic Details About Deep Neural Networks applied to Physics
+https://www.overleaf.com/5389572137znnjcpqctqxj
 
 Installation 
 ============
