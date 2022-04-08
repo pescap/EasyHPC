@@ -5,8 +5,8 @@ Theory Behind Inverse Problems
 
 To do. Explain the theory for inverse problems, and add references.
 
-.. image:: ~images/RedNeuronal.png
-
+.. image:: ~Images/RedNeuronal.png
+ 
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
 
