@@ -1,10 +1,12 @@
 DeepXDE
 =======
 
+Theory Behind Inverse Problems
 
+<<<<<<< HEAD
 To do. Explain the theory for inverse problems, and add references.
 
-You can temporarily edit here.
+You can temporarily edit the latex file here.
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
 
