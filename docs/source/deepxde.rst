@@ -3,6 +3,7 @@ DeepXDE
 
 
 To do. Explain the theory for inverse problems, and add references.
+https://www.overleaf.com/download/project/62502720a94a34337536dab8/build/1800a459bc4-eb8f06008612c6e2/output/output.pdf?compileGroup=standard&clsiserverid=clsi-pre-emp-e2-f-w6d6&popupDownload=true
 
 
 Installation 
