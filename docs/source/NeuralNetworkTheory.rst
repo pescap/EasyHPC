@@ -3,8 +3,7 @@
 In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
 data.
 
-nginx_pdf_
-.. _nginx_pdf: TID_2022(15).pdf
+.. image:: TID_2022(15).pdf
 
 .. image:: ~Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
