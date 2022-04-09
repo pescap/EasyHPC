@@ -10,7 +10,7 @@ DeepXDE
 In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
 data.
 
-.. image:: ~Image/RedNeuronal.png
+.. image:: ~Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
 
