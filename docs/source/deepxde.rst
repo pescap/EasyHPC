@@ -1,30 +1,44 @@
 DeepXDE
 =======
 
-Theory Behind Inverse Problems
+**Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
 
-To do. Explain the theory for inverse problems, and add references.
+
+
+**Neural Networks**
+
+In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
+data.
+
+.. image:: ~Image/RedNeuronal.png
+(by Andrew Ng, Machine Learning Coursera)
+
 
 .. image:: ~Image/RedNeuronal.png
 
-As shown in the figure, the layer of neurons is represented with a nonlinear transformation.
+As shown in the figure, the layer of neurons is represented with a nonlinear transformation. In each layer shown in figure 1, the network uses the same activation function (nonlinear transformation in figure 2).
 
-In simple terms, a neural network is a function with the ability to learn to detect complex patterns.
+There are many activation functions
 
 On this occasion, we will use this type of architecture to approach the nature of vector and scalar fields applied to
 physics.
 
 To optimize the model we need data. Different points in space-time with associated vectors belonging to our vector or scalar field.
 
-First, we will use the maximum likelihood method to define the optimization problem, which, under a series of assumptions, consists of minimizing the mean square error between the predictions and the values observed in the database.
+First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database.
 
 Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
 
-Third, we will use the backpropagation algorithm to calculate the evaluation in the gradient function of the function that measures the efficiency of the neural network (cost function).
+To complete with the previous task, we will use the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
 
-At each "epoch", the algorithm uses the backpropagation algorithm. And then with the gradient descent it varies its parameters until it reaches the optimal solution.
+Then with the gradient descent it varies its parameters until it reaches the optimal solution.
 
+These videos explain in a more intuitive way how neural networks work.
 
+What is a neural network?
+https://www.youtube.com/watch?v=n1l-9lIMW7E&list=PLpFsSf5Dm-pd5d3rjNtIXUHT-v7bdaEIe&index=2
+Supervised Learning with a Neural Network
+https://www.youtube.com/watch?v=BYGpKPY9pO0
 
 Mathematic Details About Deep Neural Networks applied to Physics
 https://www.overleaf.com/5389572137znnjcpqctqxj
