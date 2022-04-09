@@ -22,7 +22,23 @@ Fork the repository to your GitHub account
 - Go to the EasyHPC GitHub directory (`click here <https://github.com/pescap/EasyHPC>`_).
 - Click on the ``Fork`` button on the top-right hand corner of the window.
 - Choose where you want to fork EasyHPC.
-  
+
+
+SSH key configuration
+----------------------
+
+You can connect to GitHub using the Secure Shell (SSH) Protocol.
+
+If you don't have an ssh key, use the following code to create one.
+	 $ ssh-keygen
+
+Use the following to see your ssh key. 
+	 $ cat ~/.ssh/id_rsa.pb
+
+Add the ssh key to your profile.
+Copy and paste on Github>Settings>SSH and GPG Keys> New SSH key
+
+
 Work locally on the forked repository
 -------------------------------------
 Now that you have forked the repository, you will clone it locally on your computer.
