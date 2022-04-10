@@ -1,6 +1,6 @@
-Theory Behind Inverse Problems (PINNs)
+**Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
 
-**Review of Industrial Processes to apply PINNs**
+**Summary of typical industrial process engineering problems**
 ------------
 
 As a review of theory and physical concepts, you can find the class readings by Professor María Thomsen Solis from the Adolfo Ibáñez University and the python file made by Artemio Araya. Completion of this teaching material will continue to be developed after the project.
@@ -60,10 +60,6 @@ Python File: https://colab.research.google.com/drive/1JUzUBPEuqnKYCxo6BxNY5sAM3X
 
 Pyhton File: https://colab.research.google.com/drive/12tM7aDL9_stv7w-v2CeNoZcpgN9NFBf5?usp=sharing
 
-====
-
-====
-
 **Heat Transfer Equation**
 
 `M.T Class Lectures <https://drive.google.com/file/d/1zayz8u5zzlt4zTrH9YxvT7nx6CgPJBKC/view?usp=sharing>`_.
@@ -106,19 +102,59 @@ Python File: https://colab.research.google.com/drive/1hafIuEqEhiioZpQajJWUt6aSsP
 
 ====
 
-**Neural Networks**
+**Neural Networks Intuitive Approach**
 ------------
+In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
+data.
+
+.. image:: ~Image/NeuralNetworkbyAndrewNg.png
+(by Andrew Ng, Machine Learning Coursera)
+
+As shown in the figure, this neural network have an input pattern vector s of 3 dimensions. And a output predicted response of 1 dimension.
+
+The layer 1 have 0 neurons.
+The layer 2 have 3 neurons.
+The layer 3 have 2 neurons.
+The layer 4 have 1 neuron.
+
+For any layer the neurons takes the information of the prevoius layers as a lineal combination of weight and basis parameters, and apply a nonlineal
+transformation. Typical nonlineal transformations can be ReLU, Sigmoid, Tanh, etc...
+
+There exist many other activations functions. The structure and other propieties of neural networks are goning to be discussed in Mathematical Statistics Section.
+
+In this project, we will use neural networks with only 2 input patern vector that can be the time and other spatial variable, or two spatial variables, or one spatial variable, or one time variable. And output vector that represent a vector own of a scalar or a vector field.
+
+To optimize the model we need data. Different points in space-time, space-space, space or time with associated vectors or scalar value belonging to our vector or scalar field.
+
+First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database. This type of cost function (loss function) commonly originates when we assume that the values that we want to predict in the database have a random error that distributes normally, and that these random variables can also be related.
+
+Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
+
+To complete with the previous task, we will use the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays of real numbers).
+
+Then with the gradient descent it varies its parameters until it reaches the optimal solution.
+
+These videos explain in a more intuitive way how neural networks work.
+
+What is a neural network?
+https://www.youtube.com/watch?v=n1l-9lIMW7E&list=PLpFsSf5Dm-pd5d3rjNtIXUHT-v7bdaEIe&index=2
+
+Supervised Learning with a Neural Network
+https://www.youtube.com/watch?v=BYGpKPY9pO0
+
+Mathematic Details About Deep Neural Networks applied to Physics
+https://www.overleaf.com/5389572137znnjcpqctqxj
 
 
 **Neural Networks applied to physic**
 ------------
 
 
-**Maximum Likelihood Method**
+**Mathematical statistics Approach**
 ------------
 
 
-**Classic Optimization Methodos: Gradient Descent & Backpropagation**
+**Classic Optimization Methods: Gradient Descent & Backpropagation**
 ------------
 
 
