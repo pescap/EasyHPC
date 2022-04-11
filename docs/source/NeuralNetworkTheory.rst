@@ -110,6 +110,9 @@ data.
 .. image:: ~Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
+.. image:: ~Image/RedExplicada.png
+(by Andrew Ng, Machine Learning Coursera)
+
 As shown in the figure, this neural network have an input pattern vector s of 3 dimensions. And a output predicted response of 1 dimension.
 
 - The layer 1 have 0 neurons.
