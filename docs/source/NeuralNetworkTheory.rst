@@ -113,6 +113,8 @@ data.
 .. image:: ~Image/RedExplicada.png
 (by Andrew Ng, Machine Learning Coursera)
 
+Below this photo you can find the same neural network that Andrew Ng shows in his video, but in vectorized form.
+
 As shown in the figure, this neural network have an input pattern vector s of 3 dimensions. And a output predicted response of 1 dimension.
 
 - The layer 1 have 0 neurons.
