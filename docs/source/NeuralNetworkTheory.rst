@@ -135,7 +135,7 @@ And a output pattern vector that can be:
 
 To optimize the model we need data. Different points in space-time or space-space associated vectors or scalar value belonging to our vector or scalar field.
 
-First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database. This type of cost function (loss function) commonly originates when we assume that the values that we want to predict in the database have a random error that distributes normally, and that these random variables can also be related.
+First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database. This type of cost function (loss function) commonly originates when we assume that the values that we want to predict in the database have a random error that distributes normally with constant covariance matrix, and that these random error can also be related.
 
 Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
 
@@ -155,8 +155,6 @@ Mathematic Details About Deep Neural Networks applied to Physics
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
 
-**Neural Networks applied to physic**
-------------
 
 
 **Mathematical statistics Approach**
@@ -167,8 +165,6 @@ https://www.overleaf.com/5389572137znnjcpqctqxj
 ------------
 
 
-**Review of Industrial Processes to apply PINNs**
-------------
 
 Bibliography
 ------------
