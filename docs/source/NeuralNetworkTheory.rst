@@ -110,23 +110,35 @@ data.
 .. image:: ~Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
+.. image:: ~Image/RedExplicada.png
+(by Andrew Ng, Machine Learning Coursera)
+
 As shown in the figure, this neural network have an input pattern vector s of 3 dimensions. And a output predicted response of 1 dimension.
 
-The layer 1 have 0 neurons.
-The layer 2 have 3 neurons.
-The layer 3 have 2 neurons.
-The layer 4 have 1 neuron.
+- The layer 1 have 0 neurons.
+- The layer 2 have 3 neurons.
+- The layer 3 have 2 neurons.
+- The layer 4 have 1 neuron.
 
 For any layer the neurons takes the information of the prevoius layers as a lineal combination of weight and basis parameters, and apply a nonlineal
 transformation. Typical nonlineal transformations can be ReLU, Sigmoid, Tanh, etc...
 
 There exist many other activations functions. The structure and other propieties of neural networks are goning to be discussed in Mathematical Statistics Section.
 
-In this project, we will use neural networks with only 2 input patern vector that can be the time and other spatial variable, or two spatial variables, or one spatial variable, or one time variable. And output vector that represent a vector own of a scalar or a vector field.
+In this project, we will use neural networks with only 2 input patern vector that can be the following:
 
-To optimize the model we need data. Different points in space-time, space-space, space or time with associated vectors or scalar value belonging to our vector or scalar field.
+- time and a spatial variable
+- two spatial variables
 
-First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database. This type of cost function (loss function) commonly originates when we assume that the values that we want to predict in the database have a random error that distributes normally, and that these random variables can also be related.
+And a output pattern vector that can be:
+
+- a vector belonging to a vector field (For example: Electric Field, Magnetic Field, heat flux, Force field)
+- scalar value belonging to a scalar field (Tempeature, mass density)
+
+
+To optimize the model we need data. Different points in space-time or space-space associated vectors or scalar value belonging to our vector or scalar field.
+
+First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database. This type of cost function (loss function) commonly originates when we assume that the values that we want to predict in the database have a random error that distributes normally with constant covariance matrix, and that these random error can also be related.
 
 Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
 
@@ -146,8 +158,6 @@ Mathematic Details About Deep Neural Networks applied to Physics
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
 
-**Neural Networks applied to physic**
-------------
 
 
 **Mathematical statistics Approach**
@@ -158,8 +168,6 @@ https://www.overleaf.com/5389572137znnjcpqctqxj
 ------------
 
 
-**Review of Industrial Processes to apply PINNs**
-------------
 
 Bibliography
 ------------
