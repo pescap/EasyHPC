@@ -1,6 +1,16 @@
 DeepXDE
 =======
 
+
+Phisics Informed Neural Netwoeks vs Finite Element Method 
+---------------------------------------------------------
+
+FEM is a commonly used method for **numerically** solving differential equiations in engeneering and mathematical modeling. This method is very popular for solving problems in traditional fields like heat transfer, fluid flow, electromagnetic potential and even FEM based programs to run simulations. FEM is based on discretization in the given space dimensions, so it creates a discrete **mesh** of the continuous to compute approximations of the values in the nods of the mesh solving a system of equations via **linear** algebra.
+
+PINNS on the other hand give a more robust solution based on a non-linear function represented by a neural network instead of solving the matrix of equations in FEM. The parameters are no longer linked to points values in the space as they are replaced with the weights and biases of the loss function wich is a nonlinear and nonconvex function respect to its parameter theta. Going into the training we have our biggest advantage so far as we can feed our NN with scattered points because this model does not require a mesh for this operation. Lastly our neural network can manage solving its loss function through multiple dimensions because each layer of the neuron is differentiable, so it is the loss function, then we can optimize it via a gradient based algorithm using the backpropagation algorithm.
+
+Therefore, there are some clear advantages in the use of PINNS because its compatibility to compute a multidimensional solution with independence of the points in the training data. 
+
 **Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
 
 
