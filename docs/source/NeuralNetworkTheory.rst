@@ -110,7 +110,7 @@ data.
 .. image:: ~Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
-.. image:: ~Image/RedExplicada2.png
+.. image:: ~Image/RedExplicadaT.png
 (by Andrew Ng, Machine Learning Coursera)
 
 Below this photo you can find the same neural network that Andrew Ng shows in his video, but in vectorized form.
