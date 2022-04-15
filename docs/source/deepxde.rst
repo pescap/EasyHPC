@@ -3,8 +3,6 @@ DeepXDE
 
 **Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
 
-
-
 **Neural Networks**
 
 In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
@@ -16,20 +14,20 @@ data.
 
 .. image:: ~Image/RedNeuronal.png
 
-As shown in the figure, the layer of neurons is represented with a nonlinear transformation. In each layer shown in figure 1, the network uses the same activation function (nonlinear transformation in figure 2).
+As shown in the figure, the layer of neurons is represented with a nonlinear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
 
-There are many activation functions
+There exist several activation functions.
 
-On this occasion, we will use this type of architecture to approach the nature of vector and scalar fields applied to
+On this occasion, we use this type of architecture to approach the nature of vector and scalar fields applied to
 physics.
 
-To optimize the model we need data. Different points in space-time with associated vectors belonging to our vector or scalar field.
+We need data to optimize the model. Data is defined as being points in space-time with associated vectors belonging to our vector or scalar field.
 
-First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database.
+First, we use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of finding the parameters of the network which minimize a type of mean square error (the loss function) between the predictions and the values observed in the database.
 
-Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
+Second, we apply gradient descent algorithm to find the network parameters that best fit our predictions.
 
-To complete with the previous task, we will use the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
+To complete the previous task, we call the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
 
 Then with the gradient descent it varies its parameters until it reaches the optimal solution.
 
