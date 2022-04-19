@@ -6,7 +6,7 @@
 
 **Documentation**: [ReadTheDocs](https://easyhpc.readthedocs.io)
 
-EasyHPC is an thorough documentation whose purpose is to allow anyone to **collaborate on High Performance Computing (HPC) projects**.
+EasyHPC is a thorough documentation whose purpose is to allow anyone to **collaborate on High Performance Computing (HPC) projects**.
 HPC requires mastering a wide range of independent fields (see items below). 
 
 Nonetheless, nothing is impossible, do not discourage yourself! 
