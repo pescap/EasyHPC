@@ -13,7 +13,7 @@ Nonetheless, nothing is impossible, do not discourage yourself!
 
 If you follow the guidelines, you will grasp the main concepts to run HPC experiments, especially for Deep Learning (DL) purposes. 
 
-EasyHPC intended to boost the learning process by providing condensend information that encompasses the knowledge of several months. It comes with self-explanatory materials and generic commands. 
+EasyHPC intended to boost the learning process by providing condensed information that encompasses the knowledge of several months. It comes with self-explanatory materials and generic commands. 
 
 EasyHPC includes:
 
