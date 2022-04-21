@@ -110,8 +110,10 @@ data.
 .. image:: ~Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
-.. image:: ~Image/RedExplicada.png
+.. image:: ~Image/RedExplicadaT.png
 (by Andrew Ng, Machine Learning Coursera)
+
+Below this photo you can find the same neural network that Andrew Ng shows in his video, but in vectorized form.
 
 As shown in the figure, this neural network have an input pattern vector s of 3 dimensions. And a output predicted response of 1 dimension.
 
@@ -121,7 +123,7 @@ As shown in the figure, this neural network have an input pattern vector s of 3 
 - The layer 4 have 1 neuron.
 
 For any layer the neurons takes the information of the prevoius layers as a lineal combination of weight and basis parameters, and apply a nonlineal
-transformation. Typical nonlineal transformations can be ReLU, Sigmoid, Tanh, etc...
+transformation. Typical nonlineal transformations can be ReLU, Sigmoid, Tanh, etc ...
 
 There exist many other activations functions. The structure and other propieties of neural networks are goning to be discussed in Mathematical Statistics Section.
 
@@ -133,8 +135,7 @@ In this project, we will use neural networks with only 2 input patern vector tha
 And a output pattern vector that can be:
 
 - a vector belonging to a vector field (For example: Electric Field, Magnetic Field, heat flux, Force field)
-- scalar value belonging to a scalar field (Tempeature, mass density)
-
+- scalar value belonging to a scalar field (Temperature, mass density)
 
 To optimize the model we need data. Different points in space-time or space-space associated vectors or scalar value belonging to our vector or scalar field.
 
@@ -142,7 +143,7 @@ First, we will use the maximum likelihood method to define the optimization prob
 
 Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
 
-To complete with the previous task, we will use the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays of real numbers).
+We will update our parameters by multiplying the vector obtained by a lambda scalar number and adding it to the vector with which we calculate the gradient of the cost function. We will go through this process many times (each process is a particular epoch), each time reducing the error variance of our predictions.
 
 Then with the gradient descent it varies its parameters until it reaches the optimal solution.
 
@@ -166,6 +167,7 @@ https://www.overleaf.com/5389572137znnjcpqctqxj
 
 **Classic Optimization Methods: Gradient Descent & Backpropagation**
 ------------
+
 
 
 

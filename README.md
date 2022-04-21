@@ -6,8 +6,16 @@
 
 **Documentation**: [ReadTheDocs](https://easyhpc.readthedocs.io)
 
-Documentation on HPC and Open Source collaboration for HPC simulations. This project is intended to allow fast learning of HPC with Python. 
-It includes:
+EasyHPC is a thorough documentation whose purpose is to allow anyone to **collaborate on High Performance Computing (HPC) projects**.
+HPC requires mastering a wide range of independent fields (see items below). 
+
+Nonetheless, nothing is impossible, do not discourage yourself! 
+
+If you follow the guidelines, you will grasp the main concepts to run HPC experiments, especially for Deep Learning (DL) purposes. 
+
+EasyHPC intended to boost the learning process by providing condensed information that encompasses the knowledge of several months. It comes with self-explanatory materials and generic commands. 
+
+EasyHPC includes:
 
     -  Github usage
     -  Collaborative code development
@@ -19,4 +27,4 @@ It includes:
     -  Deep Learning
     -  Physics-informed Neural Networks
 
-This code was created for a Undergraduate research course at Universidad Adolfo Ibáñez, Santiago, Chile.
+This code was created for an Undergraduate research course at Universidad Adolfo Ibáñez, Santiago, Chile.
