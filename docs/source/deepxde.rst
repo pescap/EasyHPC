@@ -2,8 +2,8 @@ DeepXDE
 =======
 
 
-Phisics Informed Neural Networks vs Finite Element Method 
----------------------------------------------------------
+Phisics Informed Neural Networks (PINNs) vs Finite Element Method (FEM)
+-----------------------------------------------------------------------
 
 FEM is a commonly used method for **numerically** solving differential equiations in engeneering and mathematical modeling. This method is very popular for solving problems in traditional fields like heat transfer, fluid flow, electromagnetic potential and even FEM based programs to run simulations. FEM is based on discretization in the given space dimensions, so it creates a discrete **mesh** of the continuous to compute approximations of the values in the nods of the mesh solving a system of equations via **linear** algebra.
 
@@ -26,7 +26,7 @@ data.
 
 .. image:: ~Image/RedNeuronal.png
 
-As shown in the figure, the layer of neurons is represented with a nonlinear transformation. In each layer shown in figure 1, the network uses the same activation function (nonlinear transformation in figure 2).
+As shown in the figure, the layer of neurons is represented with a non-linear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
 
 There are many activation functions
 
