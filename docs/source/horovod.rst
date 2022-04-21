@@ -92,6 +92,8 @@ GPU VRAM.
 
 4. After setting your dataset and model ::
 
+    model = ...
+    dataset = ...
     opt = tf.optimizers.Adam(0.001 * hvd.size())
 
 5. Add the Horovod DistributedOptimizer ::
