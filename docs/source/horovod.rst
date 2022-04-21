@@ -52,22 +52,16 @@ This part allows you to pass certain gpus to the ``horovodrun`` command, in this
 
 2. ::
 
-    horovodrun -np 2 -H localhost:2
+    horovodrun -np 2 -H localhost:2 python tensorflow2_synthetic_benchmark.py
 
 This part explicitly calls horovodrun with ``2`` gpus in the localhost, this case is assuming that you are 
 working on only one machine.
 
-3. ::
-
-    python tensorflow2_synthetic_benchmark.py
-
-And finally you use python to run the wanted file.
-
 
 .. Later on in this part we will add the parallel to DeepXDE.
 
-Implementing horovod
---------------------
+Use horovod
+-----------
 In this section we will implement Horovod to a TensorFlow v2 Keras code.
 
 1. Import horovod ::
