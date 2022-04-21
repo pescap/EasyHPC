@@ -1,7 +1,19 @@
 DeepXDE
 =======
 
+
+Phisics Informed Neural Networks (PINNs) vs Finite Element Method (FEM)
+-----------------------------------------------------------------------
+
+FEM is a commonly used method for **numerically** solving differential equiations in engeneering and mathematical modeling. This method is very popular for solving problems in traditional fields like heat transfer, fluid flow, electromagnetic potential and even FEM based programs to run simulations. FEM is based on discretization in the given space dimensions, so it creates a discrete **mesh** of the continuous to compute approximations of the values in the nods of the mesh solving a system of equations via **linear** algebra.
+
+PINNS on the other hand give a more robust solution based on a non-linear function represented by a neural network instead of solving the matrix of equations in FEM. The parameters are no longer linked to points values in the space as they are replaced with the weights and biases of the loss function wich is a nonlinear and nonconvex function respect to its parameter theta. Going into the training we have our biggest advantage so far as we can feed our NN with scattered points because this model does not require a mesh for this operation. Lastly our neural network can manage solving its loss function through multiple dimensions because each layer of the neuron is differentiable, so it is the loss function, then we can optimize it via a gradient based algorithm using the backpropagation algorithm.
+
+Therefore, there are some clear advantages in the use of PINNS because its compatibility to compute a multidimensional solution with independence of the points in the training data. 
+
 **Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
+
+
 
 **Neural Networks**
 
@@ -14,20 +26,20 @@ data.
 
 .. image:: ~Image/RedNeuronal.png
 
-As shown in the figure, the layer of neurons is represented with a nonlinear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
+As shown in the figure, the layer of neurons is represented with a non-linear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
 
-There exist several activation functions.
+There are many activation functions
 
-On this occasion, we use this type of architecture to approach the nature of vector and scalar fields applied to
+On this occasion, we will use this type of architecture to approach the nature of vector and scalar fields applied to
 physics.
 
-We need data to optimize the model. Data is defined as being points in space-time with associated vectors belonging to our vector or scalar field.
+To optimize the model we need data. Different points in space-time with associated vectors belonging to our vector or scalar field.
 
-First, we use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of finding the parameters of the network which minimize a type of mean square error (the loss function) between the predictions and the values observed in the database.
+First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database.
 
-Second, we apply gradient descent algorithm to find the network parameters that best fit our predictions.
+Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
 
-To complete the previous task, we call the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
+To complete with the previous task, we will use the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
 
 Then with the gradient descent it varies its parameters until it reaches the optimal solution.
 
