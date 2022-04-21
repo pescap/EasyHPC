@@ -42,7 +42,7 @@ Mathematic Details About Deep Neural Networks applied to Physics
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
 Installation 
-============
+------------
 
 
 **Requirements**
@@ -79,7 +79,7 @@ One time the repository was clone and the PATH was updated, you are ready to run
 
 
 Solving a Time-independent PDE: 
-===============================
+-------------------------------
 
 For the original solution you can go to the 
 `DeepXDE documentation <https://deepxde.readthedocs.io/en/latest/demos/pinn_forward/helmholtz.2d.dirichlet.html>`_.
