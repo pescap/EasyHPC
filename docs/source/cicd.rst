@@ -20,7 +20,7 @@ This entire page is written with the RST syntax. In the landing page, you should
 
 
 
-There are a few special characters used to format text. The special character ``*`` is used to defined bold and italic text as shown in the table below. The backquote character ````` is another special character used to create links to internal or external web pages as you will see in section `Internal and External Links`_.
+There are a few special characters used to format text. The special character ``*`` is used to defined bold and italic text as shown in the table below. The backquote character ````` is another special character used to create links to internal or external web pages as you will see in section `Internal and External Links`.
 
 =========== ================================== ==============================
 usage          syntax                           HTML rendering
