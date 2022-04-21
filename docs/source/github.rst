@@ -18,6 +18,7 @@ With this, you successfully created a new issue that every other collaborator ca
 Fork the repository to your GitHub account
 ------------------------------------------
 
+This step creates your own remote copy of the repo you want to work on. This way you can modify the code, create your own branches and keep the main code of the main repo clean and safe before merging your changes.
 
 - Go to the EasyHPC GitHub directory (`click here <https://github.com/pescap/EasyHPC>`_).
 - Click on the ``Fork`` button on the top-right hand corner of the window.
@@ -38,10 +39,13 @@ Now, you can see your ssh key by running:
 Add the ssh key to your profile.
 Copy and paste on Github>Settings>SSH and GPG Keys> New SSH key
 
+*Workflow*
+----------
+The next series of steps will help you understand the git workflow and how to either update your repo or commiting your changes to then push to your forked repo and send pull requests to add your contributions.
 
-Work locally on the forked repository
--------------------------------------
-Now that you have forked the repository, you will clone it locally on your computer.
+Cloning your forked repository
+------------------------------
+Now that you have forked the repository, you will clone it locally on your computer to now generate a copy of it into your disk.
 
 - Go to the forked GitHub directory webpage. It should be something like: ::
 
@@ -49,7 +53,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 - Click on the ``clone`` button and copy the directory URL.
   
-- In your terminal type (This step just needs to be done when you don´t have the local repo of the forked repository)::
+- In your terminal type (This step just needs to be done when you don't have the local repo of the forked repository)::
 
 	$ git clone directory_url
 
@@ -63,10 +67,10 @@ Now that you have forked the repository, you will clone it locally on your compu
 
 Now, you are ready to work on this branch, to make all the changes that you want to the code.  
 
-How to keep your local repository up to date
---------------------------------------------
+How to keep your local repository up to date or git pull
+--------------------------------------------------------
 
-Configure a remote:
+Once you're done with the ssh key configuration, let's set up a remote:
    
 1. List the current remote repository for your fork: ::
 
@@ -107,14 +111,14 @@ $ git pull upstream
 
 **Warning**: You will lose your work in the working space if you pull any repository before you commit into the local repo.
 
-Push to the main/forked repository
-----------------------------------	
+Commit and push to the main/forked repository
+---------------------------------------------	
 
 Remember that if you added files to your directory in the working space, those files must be added before commiting: ::
 
 $ git add <file_name>
 
-Once your changes are done, you can commit and push them to the remote branch ``neo``: ::
+Once your changes are done, you can commit and push them to the remote branch ``neo``, note that when you git commit you're saving those changes in your local repo and then git push uploads your local repo into either your origin(highly recomended) or upstream remote repo: ::
 
 	$ git commit -a -m "message about what you added"
 	$ git push origin neo 
@@ -128,11 +132,14 @@ For example, if you commit solves issue number `#90`, you can run::
 
 This will automatically close issue `#90`.
 
+Pull requests for merging your changes into the original repo
+-------------------------------------------------------------
+
 If you want to merge your changes to the original ``EasyHPC``, go back to your forked page, e.g.: ::
 
  https://github.com/your_username/EasyHPC/
 
-Check compatibility and propose a Pull Request. 
+Check compatibility and propose a Pull Request. You should see your pushes on the github website of your fork and it will suggest you to send a pull request 
 
 **Note**: Before you submit a pull request: 
 
@@ -143,6 +150,9 @@ Check compatibility and propose a Pull Request.
  	$ black my_code.py
 
 You're ready to collaborate to any Open-Source repository on GitHub!
+
+*Extra help*
+------------
 
 How to manually link an issue with a pull request
 -------------------------------------------------
