@@ -1,7 +1,7 @@
 GitHub
 ======
 
-How to collaborate to a repository such as `EasyHPC <https://github.com/pescap/EasyHPC>`_? If you want to send Pull Requests to open source directories, you have to follow these steps:
+How to collaborate to a repository such as `EasyHPC <https://github.com/pescap/EasyHPC>`_? If you want to send Pull Requests to open source repositories, you are encouraged to follow these steps:
 
 Create an issue
 ---------------
@@ -9,10 +9,10 @@ To propose changes or enhancements to the code, it is preferable to use the Issu
 
 - Go to the `issues <https://github.com/pescap/EasyHPC/issues>`_ section of the GitHub repository.
 - Click on ``New issue`` button.
-- Write a **title** for the issue and in the **write** section describe it.
-- Add **labels** and **assignees**, you can do this in the right panel when creating an issue.
+- Define a **title** for the issue fill in the **write** section.
+- Add **labels** and **assignees** (right panel).
 
-With this, you successfully added a new issue that every other collaborator can see and comment.
+With this, you successfully created a new issue that every other collaborator can see and comment.
 
 
 Fork the repository to your GitHub account
@@ -22,7 +22,23 @@ Fork the repository to your GitHub account
 - Go to the EasyHPC GitHub directory (`click here <https://github.com/pescap/EasyHPC>`_).
 - Click on the ``Fork`` button on the top-right hand corner of the window.
 - Choose where you want to fork EasyHPC.
-  
+
+
+SSH key configuration
+----------------------
+
+You can log into GitHub using the Secure Shell (SSH) Protocol.
+
+If you don't have an ssh key, use the following code to create one.
+	 $ ssh-keygen
+
+Now, you can see your ssh key by running: 
+	 $ cat ~/.ssh/id_rsa.pb
+
+Add the ssh key to your profile.
+Copy and paste on Github>Settings>SSH and GPG Keys> New SSH key
+
+
 Work locally on the forked repository
 -------------------------------------
 Now that you have forked the repository, you will clone it locally on your computer.
@@ -140,7 +156,7 @@ How to manually link an issue with a pull request
 
 Milestones
 ----------
-To better manage/see due dates, completion percentage, open/closed issues and pull requests associated with a specific part/characteristic of the project. 
+To manage better due dates, completion percentage, open/closed issues and pull requests associated with a specific part/characteristic of the project:
 
 1. Go to the main page of the original repository.
 2. Click on ``Issues`` or ``Pull requests``.

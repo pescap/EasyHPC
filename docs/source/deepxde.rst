@@ -1,9 +1,45 @@
 DeepXDE
 =======
 
+**Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
 
-To do. Explain the theory for inverse problems, and add references.
+**Neural Networks**
 
+In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
+data.
+
+.. image:: ~Image/NeuralNetworkbyAndrewNg.png
+(by Andrew Ng, Machine Learning Coursera)
+
+
+.. image:: ~Image/RedNeuronal.png
+
+As shown in the figure, the layer of neurons is represented with a nonlinear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
+
+There exist several activation functions.
+
+On this occasion, we use this type of architecture to approach the nature of vector and scalar fields applied to
+physics.
+
+We need data to optimize the model. Data is defined as being points in space-time with associated vectors belonging to our vector or scalar field.
+
+First, we use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of finding the parameters of the network which minimize a type of mean square error (the loss function) between the predictions and the values observed in the database.
+
+Second, we apply gradient descent algorithm to find the network parameters that best fit our predictions.
+
+To complete the previous task, we call the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
+
+Then with the gradient descent it varies its parameters until it reaches the optimal solution.
+
+These videos explain in a more intuitive way how neural networks work.
+
+What is a neural network?
+https://www.youtube.com/watch?v=n1l-9lIMW7E&list=PLpFsSf5Dm-pd5d3rjNtIXUHT-v7bdaEIe&index=2
+Supervised Learning with a Neural Network
+https://www.youtube.com/watch?v=BYGpKPY9pO0
+
+Mathematic Details About Deep Neural Networks applied to Physics
+https://www.overleaf.com/5389572137znnjcpqctqxj
 
 Installation 
 ------------
