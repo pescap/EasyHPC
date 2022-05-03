@@ -107,10 +107,10 @@ Python File: https://colab.research.google.com/drive/1hafIuEqEhiioZpQajJWUt6aSsP
 In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
 data.
 
-.. image:: ~Image/NeuralNetworkbyAndrewNg.png
+.. image:: Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
-.. image:: ~Image/RedExplicadaT.png
+.. image:: Image/RedExplicadaT.png
 (by Andrew Ng, Machine Learning Coursera)
 
 Below this photo you can find the same neural network that Andrew Ng shows in his video, but in vectorized form.
