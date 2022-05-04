@@ -20,11 +20,11 @@ Therefore, there are some clear advantages in the use of PINNS because its compa
 In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
 data.
 
-.. image:: ~Image/NeuralNetworkbyAndrewNg.png
+.. image:: Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
 
-.. image:: ~Image/RedNeuronal.png
+.. image:: Image/RedNeuronal.png
 
 As shown in the figure, the layer of neurons is represented with a non-linear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
 

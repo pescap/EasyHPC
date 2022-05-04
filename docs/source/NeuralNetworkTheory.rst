@@ -107,10 +107,10 @@ Python File: https://colab.research.google.com/drive/1hafIuEqEhiioZpQajJWUt6aSsP
 In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
 data.
 
-.. image:: ~Image/NeuralNetworkbyAndrewNg.png
+.. image:: Image/NeuralNetworkbyAndrewNg.png
 (by Andrew Ng, Machine Learning Coursera)
 
-.. image:: ~Image/RedExplicadaT.png
+.. image:: Image/RedExplicadaT.png
 (by Andrew Ng, Machine Learning Coursera)
 
 Below this photo you can find the same neural network that Andrew Ng shows in his video, but in vectorized form.
@@ -158,17 +158,38 @@ https://www.youtube.com/watch?v=BYGpKPY9pO0
 Mathematic Details About Deep Neural Networks applied to Physics
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
-
-
-
-**Mathematical statistics Approach**
+**Hypotesis Testing**
 ------------
 
+If we have a vector field or K dimensions or a scalar field of 1 dimension, and a random experiment that consists of measuring those vectors of interest for different points in time-space, then we can use the Maximum Likelihood Method 
+and an evaluation metric to determine if to determine whether we can indeed use the neural network to approximate the vector or scalar field of interest.
 
-**Classic Optimization Methods: Gradient Descent & Backpropagation**
-------------
+- Our null hypothesis is that there exist the relationship and it is the one trained using the train data.
+
+- The alternative hypothesis is that the trained network does not approximate the vector or scalar function of interest.
 
 
+The randomness of the measurements is based on the idea that we have a measurement error of the instrument used in the laboratory.
+
+Now we can then use it to predict new values that have not been observed in the database.
+
+
+**Maximum Likelihood Method**
+
+If we want to estimate a vector field of K dimensions or a scalar field of 1 dimension.
+
+Assuming that at a point in space we have a point vector of interest that has an associated probability density distribution due to random measurement error, where the expectation of said vector is the value of interest, then for a point sample or realizations of such a measurement experiment, we define the likelihood function of the sample as follows.
+
+.. image:: Image/MLEPhoto.png
+(deepxde library)
+
+It is mathematically provable that the likelihood defined in this way is the equivalent of reducing a type of mean square error, or what is popularly known as MLE.
+
+**Precisely in the deepxde library we do not carry out this procedure**
+
+We assume that there is a relationship between the expectation of these random vectors as a function of a point in space. We use the neural network to parameterize the expectation of our random vectors for different points in space.
+
+We assume that there is independence between the different vectors observed in the database.
 
 
 Bibliography
