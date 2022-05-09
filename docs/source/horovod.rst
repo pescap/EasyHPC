@@ -216,7 +216,7 @@ official TensorFlow documentation.
 Note
 ******
 
-.. .. todo::
+.. todo::
     
     Add documentation about tf.GradientTape(), etc.
 
