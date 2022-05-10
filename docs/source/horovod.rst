@@ -172,7 +172,7 @@ official TensorFlow documentation.
     ds_test = ds_test.cache()
     ds_test = ds_test.prefetch(tf.data.AUTOTUNE)
 
-2. If you want to know what is the size of this dataset you can do this before you start training::
+2. If you want to know which is the size of this dataset you can run the following before you start training::
 
     print(f"Length: {len(ds_train)}")
 
