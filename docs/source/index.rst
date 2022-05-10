@@ -4,7 +4,8 @@
    contain the root `toctree` directive.
 
 EasyHPC
-========
+=======
+
 `EasyHPC <https://github.com/pescap/EasyHPC>`_ is a repository including documentation for fast learning of HPC simulations with Python. 
 
 User guide
