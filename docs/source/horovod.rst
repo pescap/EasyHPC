@@ -62,12 +62,12 @@ working on only one machine.
 
 Use horovod
 -----------
-In this section we will implement Horovod to a TensorFlow v2 Keras code.
+In this section we will implement Horovod to a TensorFlow V2 code from this `example <https://horovod.readthedocs.io/en/stable/tensorflow.html>`_.
 
 1. Import horovod ::
 
     import tensorflow as tf
-    import horovod.tensorflow.keras as horovod
+    import horovod.tensorflow as hvd
 
 2. Initialize horovod ::
 
@@ -89,42 +89,51 @@ GPU VRAM.
     model = ...
     dataset = ...
     opt = tf.optimizers.Adam(0.001 * hvd.size())
+    loss = tf.losses.SparseCategoricalCrossentropy()
 
-5. Add the Horovod DistributedOptimizer ::
-
-    opt = hvd.DistributedOptimizer(opt)
-
-6. Now, specify ``experimental_run_tf_function=false`` ::
-
-    mnist_model.compile(loss=tf.losses.SparseCategoricalCrossentropy(),
-                    optimizer=opt,
-                    metrics=['accuracy'],
-                    experimental_run_tf_function=False)
+5. Set up the function ::
     
-This ensure TensorFlow uses hvd.DistributedOptimizer().
+    checkpoint_dir = './checkpoints'
+    checkpoint = tf.train.Checkpoint(model=model, optimizer=opt)
 
-7. Setting callbacks ::
+6. Function ::
 
-    callbacks = [hvd.callbacks.BroadcastGlobalVariablesCallback(0),]
+    def training_step(images, labels, first_batch):
+        with tf.GradientTape() as tape:
+            probs = mnist_model(images, training = True)
+            loss_value = loss(labels, probs)
+        
+        # Horovod: add Horovod Distributed GradientTape.
+        tape = hvd.DistributedGradientTape(tape)
 
-This will broadcast the initial variable states from rank 0 to every processes. 
-Just like the it is explained in the `official documentation <https://horovod.readthedocs.io/en/stable/keras.html>`_ 
-this is necessary to ensure consistent intialization of all workers.
+        grads = tape.gradient(loss_value, mnist_model.trainable_variables)
+        opt.apply_gradients(zip(grads, mnist_model.trainable_variables))
 
-8. Save checkpoints only on worker 0 ::
+        # Horovod: broadcast initial variable states from rank 0 to all other processes.
+        # This is necessary to ensure consistent initialization of all workers when
+        # training is started with random weights or restored from a checkpoint.
+        #
+        # Note: broadcast should be done after the first gradient step to ensure optimizer
+        # initialization.
+        if first_batch:
+            hvd.broadcast_variables(mnist_model.variables, root_rank = 0)
+            hvd.broadcast_variables(opt.variables(), root_rank = 0)
 
+        return loss_value
+
+7. Run the code ::
+
+    # Horovod: adjust number of steps based on number of GPUs.
+    for batch, (images, labels) in enumerate(dataset.take(10000 // hvd.size())):
+        loss_value = training_step(images, labels, batch == 0)
+
+        if batch % 10 == 0 and hvd.local_rank() == 0:
+            print('Step #%d\tLoss: %.6f' % (batch, loss_value))
+
+    # Horovod: save checkpoints only on worker 0 to prevent other workers from
+    # corrupting it.
     if hvd.rank() == 0:
-        callbacks.append(keras.callbacks.ModelCheckpoint('./checkpoint-{epoch}.h5'))
-
-9. Fitting the model ::
-
-    model.fit(dataset,
-          steps_per_epoch=500 // hvd.size(),
-          callbacks=callbacks,
-          epochs=24,
-          verbose=1 if hvd.rank() == 0 else 0)
-
-Remember if the verbose is needed, assign it to ``1`` if there is only one GPU, else is ``0``.
+        checkpoint.save(checkpoint_dir)
 
 
 Simple example
