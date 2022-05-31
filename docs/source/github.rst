@@ -1,3 +1,4 @@
+======
 GitHub
 ======
 
@@ -26,7 +27,7 @@ This step creates your own remote copy of the repo you want to work on. This way
 
 
 SSH key configuration
-----------------------
+---------------------
 
 You can log into GitHub using the Secure Shell (SSH) Protocol.
 
@@ -43,12 +44,12 @@ Copy and paste on:
 
 * Github > Settings > SSH and GPG Keys > New SSH key
 
-*Workflow*
-----------
+Workflow
+--------
 The next series of steps will help you understand the git workflow and how to either update your repo or commiting your changes to then push to your forked repo and send pull requests to add your contributions.
 
 Cloning your forked repository
-------------------------------
+********************************
 Now that you have forked the repository, you will clone it locally on your computer to now generate a copy of it into your disk.
 
 - Go to the forked GitHub directory webpage. It should be something like: ::
@@ -72,7 +73,7 @@ Now that you have forked the repository, you will clone it locally on your compu
 Now, you are ready to work on this branch, to make all the changes that you want to the code.  
 
 How to keep your local repository up to date or git pull
---------------------------------------------------------
+**********************************************************
 
 Once you're done with the ssh key configuration, let's set up a remote:
    
@@ -116,7 +117,7 @@ $ git pull upstream
 **Warning**: You will lose your work in the working space if you pull any repository before you commit into the local repo.
 
 Commit and push to the main/forked repository
----------------------------------------------	
+***********************************************	
 
 Remember that if you added files to your directory in the working space, those files must be added before commiting: ::
 
@@ -137,7 +138,7 @@ For example, if you commit solves issue number `#90`, you can run::
 This will automatically close issue `#90`.
 
 Pull requests for merging your changes into the original repo
--------------------------------------------------------------
+***************************************************************
 
 If you want to merge your changes to the original ``EasyHPC``, go back to your forked page, e.g.: ::
 
@@ -155,11 +156,11 @@ Check compatibility and propose a Pull Request. You should see your pushes on th
 
 You're ready to collaborate to any Open-Source repository on GitHub!
 
-*Extra help*
-------------
+Extra help
+----------
 
 How to manually link an issue with a pull request
--------------------------------------------------
+***************************************************
 
 1. On the upstream GitHub repository click on ``Pull requests``.
 2. Click on the pull request that you would like to link to an issue.
@@ -169,7 +170,7 @@ How to manually link an issue with a pull request
 **Note**: You can do this every time you are about to present a pull request to the upstream repository.
 
 Milestones
-----------
+************
 To manage better due dates, completion percentage, open/closed issues and pull requests associated with a specific part/characteristic of the project:
 
 1. Go to the main page of the original repository.
@@ -181,7 +182,7 @@ To manage better due dates, completion percentage, open/closed issues and pull r
 **Note**: When you delete milestones, issues and pull requests are not affected.
 
 GitHub Actions
---------------
+****************
 `GitHub Actions <https://github.com/features/actions>`_ allows to automate workflows. They can be accessed via the ``Actions`` in the home GitHub repository (web).
 
 Workflows are stored in `.github/workflow <https://github.com/pescap/EasyHPC/tree/main/.github/workflows>`_. A simple workflow was created in `issues.yml <https://github.com/pescap/EasyHPC/blob/main/.github/workflows/issues.yml>`_. It follows the general structure for workflows: ::
