@@ -46,14 +46,14 @@ If the terminal flushes ``stddiag: Read -1``, refer to this `issue <https://gith
 Understanding the ``horovodrun`` command
 ******************************************
 
-1. ::
+::
 
     CUDA_VISIBLE_DEVICES="0,1"
 
 This part allows you to pass certain gpus to the ``horovodrun`` command, in this case we are using the gpu 
 ``0`` and ``1``.
 
-2. ::
+::
 
     horovodrun -np 2 -H localhost:2 python tensorflow2_synthetic_benchmark.py
 
