@@ -18,7 +18,7 @@ Tutorials and documentation
 
 
 Run Horovod examples on a GPU cluster
--------------------------------------
+***************************************
 
 The ``horovod`` Docker image comes with examples. Run ::
 
@@ -42,7 +42,7 @@ If you choose the `tensorflow2` backend ::
 If the terminal flushes ``stddiag: Read -1``, refer to this `issue <https://github.com/horovod/horovod/issues/503>`_ to remove the warning.
 
 Understanding the ``horovodrun`` command
-----------------------------------------
+******************************************
 
 1. ::
 
@@ -139,7 +139,7 @@ GPU VRAM.
 Observations
 **************
 
-Every code would ran on the CPU, but with this implementation it will run on the GPU(s).
+Every code would run on the CPU, but with this implementation it will run on the GPU(s).
 
 Example: If we are working with a dataset of 60000 images, with 6 epochs and a batch size of 128. And 
 therefore 469 number of iterations.
