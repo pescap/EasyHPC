@@ -7,24 +7,26 @@ Linux command line for beginners
 Here goes a short list of useful commands:
 
 File commands
-*******************
+***************
+::
 
-$ ls # Show current directory
-$ cd # Go to the root directory
-$ cd folder_example # Change directory to 'folder_example'
-$ cd .. # Go back to the previous directory
-$ mkdir folder_example # Create a new folder named 'folder_example'
-$ rm file_name  # Delete file named 'file_name'
-$ rm -rf folder_example # Delete non empty folder named <folder_example>
-$ pwd # Show the current path
-$ cat file_name # Show the content of file named 'file_name'
+    $ ls # Show current directory
+    $ cd # Go to the root directory
+    $ cd folder_example # Change directory to 'folder_example'
+    $ cd .. # Go back to the previous directory
+    $ mkdir folder_example # Create a new folder named 'folder_example'
+    $ rm file_name  # Delete file named 'file_name'
+    $ rm -rf folder_example # Delete non empty folder named <folder_example>
+    $ pwd # Show the current path
+    $ cat file_name # Show the content of file named 'file_name'
 
 System info
 *****************
+::
 
-$ htop # Check memory usage and processes
-$ df # Show disk usage
-$ date # Show the current date and time
+    $ htop # Check memory usage and processes
+    $ df # Show disk usage
+    $ date # Show the current date and time
 
 Cluster and Jupyter Notebook
 ----------------------------
@@ -45,7 +47,7 @@ Then, copy-paste the url to run the jupyter-notebook in your bowser. Sometimes, 
 
     $ lsof -i:8888
 
-This command shows you the active process identities ``PID``. To kill the process, type::
+This command shows you the active process identities ``PID``. To kill the process, type: ::
 
     $ kill -9 PID
 
