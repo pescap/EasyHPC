@@ -17,6 +17,8 @@
 
 # -- Project information -----------------------------------------------------
 
+import sys
+import os
 project = "EasyHPC"
 copyright = "2022, pescap"
 author = "pescap"
@@ -68,8 +70,6 @@ html_theme_options = {"rightsidebar": "true", "relbarbgcolor": "black"}
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = []  # ['_static']
 
-import os
-import sys
 
 sys.path.insert(0, os.path.abspath("."))
 sys.path.insert(0, os.path.abspath("../"))
@@ -97,4 +97,3 @@ latex_elements = {
 latex_documents = [
     ("index", "EasyHPC.tex", "EasyHPC Documentation", "pescap", "manual")
 ]
-

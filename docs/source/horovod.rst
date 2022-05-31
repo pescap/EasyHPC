@@ -1,3 +1,4 @@
+=======
 Horovod
 =======
 
@@ -140,7 +141,7 @@ Observations
 
 Every code would ran on the CPU, but with this implementation it will run on the GPU(s).
 
-Example, if we are working with a dataset of 60000 images, with 6 epochs and a batch size of 128. And 
+Example: If we are working with a dataset of 60000 images, with 6 epochs and a batch size of 128. And 
 therefore 469 number of iterations.
 
 .. math:: 

@@ -1,7 +1,7 @@
 CI/CD
 =====
 
-`EasyHPC <https://github.com/pescap/EasyHPC>`_ supports continuous integration (CI). Here we give a few details concerning how the latter was set. 
+`EasyHPC <https://github.com/pescap/EasyHPC>`__ supports continuous integration (CI). Here we give a few details concerning how the latter was set. 
 
 
 reStructuredText (RST)
@@ -27,7 +27,7 @@ usage          syntax                           HTML rendering
 =========== ================================== ==============================
 italic      `*italic*`                         *italic*
 bold        `**bold**`                         **bold**
-link        ```python <www.python.org>`_``     `python <www.python.org>`_
+link        ```python <www.python.org>`__``     `python <www.python.org>`__
 verbatim    ````*````                               ``*``
 =========== ================================== ==============================
 
@@ -76,13 +76,13 @@ In Sphinx, you have 2 type of links:
 
 If you want to create a link to a website, the syntax is ::
 
-    `<http://www.python.org/>`_
+    `<http://www.python.org/>`__
 
-which appear as `<http://www.python.org/>`_ . Note the underscore after the final single quote. Since the full name of the link is not always simple or meaningful, you can specify a label (note the space between the label and link name)::
+which appear as `<http://www.python.org/>`__ . Note the underscore after the final single quote. Since the full name of the link is not always simple or meaningful, you can specify a label (note the space between the label and link name)::
 
-    `Python <http://www.python.org/>`_
+    `Python <http://www.python.org/>`__
 
-The rendering is now: `Python <http://www.python.org/>`_. 
+The rendering is now: `Python <http://www.python.org/>`__. 
 
 .. note:: If you have an underscore within the label/name, you got to escape it with a '\\' character.
 
@@ -94,7 +94,7 @@ The rendering is now: `Python <http://www.python.org/>`_.
 
 All titles are considered as hyperlinks. A link to a title is just its name within quotes and a final underscore::
 
-    `Codacy`_
+    `Codacy`__
 
 This syntax works only if the title and link are within the same RST file.
 If this is not the case, then you need to create a label before the title and refer to this new link explicitly.
@@ -128,28 +128,28 @@ gives:
 
 .. note:: if two lists are separated by a blanck line only, then the two lists are not differentiated as you can see above.
 
-If you want to learn more about .rst files just visit `Here <https://thomas-cokelaer.info/tutorials/sphinx/index.html>`_ 
+If you want to learn more about .rst files just visit `Here <https://thomas-cokelaer.info/tutorials/sphinx/index.html>`__ 
 
 
 
 Travis CI
 ---------
 
-`Travis CI <https://www.travis-ci.com/>`_ allows build the package and run unit tests. 
+`Travis CI <https://www.travis-ci.com/>`__ allows build the package and run unit tests. 
 So far, EasyHPC has a Travis check implemented, which just runs a Helloworld function. More tests will be incorporated once some code is added to the git repository.
 
 To add the Travis CI checks to a git repository (e.g. to EasyHPC):
 
-- In your git repository, create a ``.travis.yml`` template (see e.g. `this one <https://github.com/pescap/EasyHPC/blob/main/.travis.yml>`_);
-- Create an account on `Travis CI <https://www.travis-ci.com/>`_. It is recommended to link your GitHub account to Travis CI (at the beginning, choose the GitHub option when you sign up for Travis CI.
+- In your git repository, create a ``.travis.yml`` template (see e.g. `this one <https://github.com/pescap/EasyHPC/blob/main/.travis.yml>`__);
+- Create an account on `Travis CI <https://www.travis-ci.com/>`__. It is recommended to link your GitHub account to Travis CI (at the beginning, choose the GitHub option when you sign up for Travis CI.
 
--  In your `Travis Repositories page <https://app.travis-ci.com/account/repositories>`_, activate the GitHub Apps Integration.
+-  In your `Travis Repositories page <https://app.travis-ci.com/account/repositories>`__, activate the GitHub Apps Integration.
 
 
 Codacy
 ------
 
-`Codacy <https://www.codacy.com/>`_ is a very useful tool to produce clean code. To set up your git repository with Codacy:
+`Codacy <https://www.codacy.com/>`__ is a very useful tool to produce clean code. To set up your git repository with Codacy:
 
 - Sign up for Codacy (it is recommend to use your GitHub account).
 - Add your repository to Codacy

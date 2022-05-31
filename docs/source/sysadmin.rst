@@ -1,5 +1,6 @@
+=====================
 System Administration
-======================
+=====================
 
 Linux command line for beginners
 --------------------------------
@@ -10,23 +11,23 @@ File commands
 ***************
 ::
 
-    $ ls # Show current directory
-    $ cd # Go to the root directory
-    $ cd folder_example # Change directory to 'folder_example'
-    $ cd .. # Go back to the previous directory
-    $ mkdir folder_example # Create a new folder named 'folder_example'
-    $ rm file_name  # Delete file named 'file_name'
-    $ rm -rf folder_example # Delete non empty folder named <folder_example>
-    $ pwd # Show the current path
-    $ cat file_name # Show the content of file named 'file_name'
+    $ ls                     # Show current directory
+    $ cd                     # Go to the root directory
+    $ cd folder_example      # Change directory to 'folder_example'
+    $ cd ..                  # Go back to the previous directory
+    $ mkdir folder_example   # Create a new folder named 'folder_example'
+    $ rm file_name           # Delete file named 'file_name'
+    $ rm -rf folder_example  # Delete non empty folder named <folder_example>
+    $ pwd                    # Show the current path
+    $ cat file_name          # Show the content of file named 'file_name'
 
 System info
 *****************
 ::
 
-    $ htop # Check memory usage and processes
-    $ df # Show disk usage
-    $ date # Show the current date and time
+    $ htop                   # Check memory usage and processes
+    $ df                     # Show disk usage
+    $ date                   # Show the current date and time
 
 Cluster and Jupyter Notebook
 ----------------------------
