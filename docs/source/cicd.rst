@@ -18,8 +18,7 @@ The reStructuredText (RST) syntax provides an easy-to-read, what-you-see-is-what
 This entire page is written with the RST syntax. In the landing page, you should find a link to the repository, which shows the RST source code.
 
 
-
-Text Formatin
+Text Formating
 ***************
 
 There are a few special characters used to format text. The special character ``*`` is used to defined bold and italic text as shown in the table below. The backquote character ````` is another special character used to create links to internal or external web pages as you will see in section `Internal and External Links`.
@@ -32,7 +31,6 @@ bold        `**bold**`                         **bold**
 link        ```python <www.python.org>`__``     `python <www.python.org>`__
 verbatim    ````*````                               ``*``
 =========== ================================== ==============================
-
 
 
 Headings
@@ -68,7 +66,6 @@ structure is determined from the succession of headings. However, it is better t
 * `"`, for paragraphs
 
 
-
 Links
 *******
 
@@ -102,7 +99,6 @@ All titles are considered as hyperlinks. A link to a title is just its name with
 
 This syntax works only if the title and link are within the same RST file.
 If this is not the case, then you need to create a label before the title and refer to this new link explicitly.
-
 
 
 List and bullets
@@ -160,6 +156,8 @@ Codacy
 
 - Sign up for Codacy (it is recommend to use your GitHub account).
 - Add your repository to Codacy
+
+
 
 Branch protection rules
 -----------------------

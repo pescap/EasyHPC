@@ -2,10 +2,13 @@
 System Administration
 =====================
 
+
+
 Linux command line for beginners
 --------------------------------
 
 Here goes a short list of useful commands:
+
 
 File commands
 ***************
@@ -21,6 +24,7 @@ File commands
     $ pwd                    # Show the current path
     $ cat file_name          # Show the content of file named 'file_name'
 
+
 System info
 *****************
 ::
@@ -29,14 +33,16 @@ System info
     $ df                     # Show disk usage
     $ date                   # Show the current date and time
 
+
+
 Cluster and Jupyter Notebook
 ----------------------------
 
-Connect via ssh to ``ip_address`` with username ``user``: ::
+Connect via SSH to ``ip_address`` with username ``user``: ::
 
     $ ssh user@ip_address
 
-Connect via ssh to the server, enabling port forwarding with port ``8888`` using: ::
+Connect via SSH to the server, enabling port forwarding with port ``8888`` using: ::
 
     $ ssh -L 8888:localhost:8888 user@ip_address
 
@@ -54,6 +60,8 @@ This command shows you the active process identities ``PID``. To kill the proces
 
 with ``PID`` the process number.
 
+
+
 GPU programming
 ---------------
 
@@ -68,6 +76,8 @@ Available GPUs are defined with global variable ``CUDA_VISIBLE_DEVICES``. To run
 Example in CPU mode (no visible GPUs), to run a python script called ``dl.py``::
 
     $ CUDA_VISIBLE_DEVICES="" python dl.py
+
+
 
 Anaconda
 --------
@@ -125,6 +135,8 @@ Conda is a package and environment management system, allowing to easily find an
 
 - Remember that any packages/libraries installed on a specific conda environment are retained there, environments do not share installed packages.
 - If you want to know more about Anaconda, you can go to their official documentation `website <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
+
+
 
 Docker
 ------

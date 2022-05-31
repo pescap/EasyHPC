@@ -2,8 +2,11 @@
 DeepXDE
 =======
 
+
+
 MacOS/Linux Installation
 ------------------------
+
 
 Requirements
 **************
@@ -36,7 +39,6 @@ We strongly recommend to use a `conda environment <https://easyhpc.readthedocs.i
 Once TensorFlow and DeepXDE were installed, you can check if the installation was successful running a IPython or Jupyter session and importing the library on it.
 
 
-
 Run custom version of DeepXDE
 *******************************
 
@@ -49,6 +51,7 @@ Second step, change Python PATH to the library directory: ::
     $ export PYTHONPATH=$PYTHONPATH:<path_to_deepxde_folder>
 
 One time the repository was clone and the PATH was updated, you are ready to run some library examples that are located in the examples directory.
+
 
 
 Solving a Time-independent PDE
@@ -175,6 +178,7 @@ Saving the plots::
 
     dde.saveplot(losshistory, train_state, issave = True, isplot = True)
 
+
 Full Code
 ***********
 ::
@@ -249,6 +253,7 @@ Full Code
 
     losshistory, train_state = model.train(epochs = epochs)
     dde.saveplot(losshistory, train_state, issave = True, isplot = True)
+
 
 
 Bibliography
