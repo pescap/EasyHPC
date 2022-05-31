@@ -166,8 +166,8 @@ https://www.youtube.com/watch?v=BYGpKPY9pO0
 Mathematic Details About Deep Neural Networks applied to Physics
 https://www.overleaf.com/5389572137znnjcpqctqxj
 
-**Hypotesis Testing**
----------------------
+Hypotesis Testing
+-----------------
 
 If we have a vector field or K dimensions or a scalar field of 1 dimension, and a random experiment that consists of measuring those vectors of interest for different points in time-space, then we can use the Maximum Likelihood Method 
 and an evaluation metric to determine if to determine whether we can indeed use the neural network to approximate the vector or scalar field of interest.

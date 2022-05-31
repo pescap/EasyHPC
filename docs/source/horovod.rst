@@ -2,6 +2,8 @@
 Horovod
 =======
 
+
+
 Tutorials and documentation
 ---------------------------
 
@@ -14,7 +16,6 @@ Tutorials and documentation
 4. Some tutorials for Horovod are available here: ::
 
 	$ git clone https://github.com/horovod/tutorials
-
 
 
 Run Horovod examples on a GPU cluster
@@ -41,6 +42,7 @@ If you choose the `tensorflow2` backend ::
 
 If the terminal flushes ``stddiag: Read -1``, refer to this `issue <https://github.com/horovod/horovod/issues/503>`_ to remove the warning.
 
+
 Understanding the ``horovodrun`` command
 ******************************************
 
@@ -60,6 +62,8 @@ working on only one machine.
 
 
 .. Later on in this part we will add the parallel to DeepXDE.
+
+
 
 Use horovod
 -----------
@@ -136,6 +140,7 @@ GPU VRAM.
     if hvd.rank() == 0:
         checkpoint.save(checkpoint_dir)
 
+
 Observations
 **************
 
@@ -148,6 +153,7 @@ therefore 469 number of iterations.
     \frac{\mbox{number of total data}}{\mbox{batch size}} = \mbox{number of iterations} \rightarrow \frac{60000}{128} = 469
 
 In this case, the dataset is finite so we can't decide how many ``steps_per_epoch`` we want. 
+
 
 Infinite amount of data
 *************************
