@@ -199,7 +199,7 @@ We assume that there is a relationship between the expectation of these random v
 
 We assume that there is independence between the different vectors observed in the database.
 
-Phisics Informed Neural Networks (PINNs) vs Finite Element Method (FEM)
+Physics Informed Neural Networks (PINNs) vs Finite Element Method (FEM)
 -----------------------------------------------------------------------
 
 FEM is a commonly used method for **numerically** solving differential equiations in engeneering and mathematical modeling. This method is very popular for solving problems in traditional fields like heat transfer, fluid flow, electromagnetic potential and even FEM based programs to run simulations. FEM is based on discretization in the given space dimensions, so it creates a discrete **mesh** of the continuous to compute approximations of the values in the nods of the mesh solving a system of equations via **linear** algebra.
