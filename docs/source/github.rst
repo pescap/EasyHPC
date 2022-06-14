@@ -156,6 +156,24 @@ Check compatibility and propose a Pull Request. You should see your pushes on th
 
 You're ready to collaborate to any Open-Source repository on GitHub!
 
+modify and import the deepxde library
+***************************************************************
+To modify and test future changes to the deepxde library, it is recommended to follow these steps:
+
+clone the deepxde library repository
+
+Once the repository is cloned on the server, use the following command to define
+the address where it is located.
+
+https://user-images.githubusercontent.com/78178128/170176010-49cea640-0626-4fee-9cde-ebd66edad9fc.png
+
+Then we can export said folder in python with the following code.
+
+https://user-images.githubusercontent.com/78178128/170176018-56049379-816a-4f81-9334-f11eb6237467.png
+
+Now we can use it and experiment.
+
+
 Extra help
 ----------
 
