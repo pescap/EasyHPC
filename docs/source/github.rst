@@ -29,20 +29,25 @@ This step creates your own remote copy of the repo you want to work on. This way
 SSH key configuration
 ---------------------
 
-You can log into GitHub using the Secure Shell (SSH) Protocol.
+You can log into GitHub using the Secure Shell (SSH) protocol.
 
-If you don't have an ssh key, use the following code to create one::
+If you don't have an SSH key, use the following command to create one::
 
 	 $ ssh-keygen
 
-Now, you can see your ssh key by running::
+You can view your SSH public key by running: ::
 
 	 $ cat ~/.ssh/id_rsa.pb
 
-Add the ssh key to your profile.
-Copy and paste on:
+Add the SSH key to your GitHub profile. Copy and paste it here:
 
-* Github > Settings > SSH and GPG Keys > New SSH key
+* Github > Settings > SSH and GPG Keys > New SSH key.
+
+You can also refer to this link for detailed instructions: ::
+
+	https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=linux
+
+Warning: Don’t forget to add your SSH private key to the `ssh-agent`!
 
 Workflow
 --------
