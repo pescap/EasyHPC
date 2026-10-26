@@ -23,6 +23,7 @@ The tree follows the natural structure of the documentation.
   cicd
   sysadmin
   horovod
+  hf_datasets
   deepxde
   nn
 
