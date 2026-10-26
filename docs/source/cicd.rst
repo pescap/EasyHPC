@@ -2,166 +2,206 @@
 CI/CD
 =====
 
-`EasyHPC <https://github.com/pescap/EasyHPC>`__ supports continuous integration (CI). Here we give a few details concerning how the latter was set. 
-
+`EasyHPC <https://github.com/pescap/EasyHPC>`__ is written in reStructuredText, built with Sphinx, checked by GitHub Actions on every pull request and published on Read the Docs. This page explains each piece so you can reuse the setup in your own projects.
 
 
 reStructuredText (RST)
 ----------------------
 
-The reStructuredText (RST) syntax provides an easy-to-read, what-you-see-is-what-you-get plaintext markup syntax and parser system. However, you need to be very precise and stick to some strict rules:
+reStructuredText is a plain-text markup language. It is easy to read, but it follows a few strict rules:
 
-- Like Python, RST syntax is sensitive to indentation !
-- RST requires blank lines between paragraphs
+- Like Python, RST is sensitive to indentation.
+- Paragraphs, lists and code blocks must be separated by blank lines.
+
+Every page of this documentation is an RST file in `docs/source <https://github.com/pescap/EasyHPC/tree/main/docs/source>`__. Reading them next to the rendered pages is the fastest way to learn the syntax.
 
 
-This entire page is written with the RST syntax. In the landing page, you should find a link to the repository, which shows the RST source code.
-
-
-Text Formating
+Text formatting
 ***************
 
-There are a few special characters used to format text. The special character ``*`` is used to defined bold and italic text as shown in the table below. The backquote character ````` is another special character used to create links to internal or external web pages as you will see in section `Internal and External Links`.
+The source
 
-=========== ================================== ==============================
-usage          syntax                           HTML rendering
-=========== ================================== ==============================
-italic      `*italic*`                         *italic*
-bold        `**bold**`                         **bold**
-link        ```python <www.python.org>`__``     `python <www.python.org>`__
-verbatim    ````*````                               ``*``
-=========== ================================== ==============================
+.. code-block:: rst
+
+    *italic*, **bold**, ``literal text`` and a link to `Python <https://www.python.org>`__
+
+renders as: *italic*, **bold**, ``literal text`` and a link to `Python <https://www.python.org>`__.
 
 
 Headings
-**********
+********
 
-In order to write a title, you can either underline it or under and overline it. The following examples are correct titles.
+A heading is a line of text underlined (and optionally overlined) with a punctuation character:
 
-.. code-block:: rest
+.. code-block:: rst
 
-    *****
-    Title
-    *****
+    ==========
+    Page title
+    ==========
 
-    subtitle
-    ########
+    Section
+    -------
 
-    subsubtitle
-    **********************
-    and so on
+    Subsection
+    **********
 
-Two rules: 
-  * If under and overline are used, their length must be identical
-  * The length of the underline must be at least as long as the title itself
+Two rules:
 
-Normally, there are no heading levels assigned to certain characters as the 
-structure is determined from the succession of headings. However, it is better to stick to the same convention throughout a project. For instance: 
+- If you use both an overline and an underline, they must have the same length.
+- The underline must be at least as long as the title.
 
-* `#` with overline, for parts
-* `*` with overline, for chapters
-* `=`, for sections
-* `-`, for subsections
-* `^`, for subsubsections
-* `"`, for paragraphs
+RST does not assign a level to each character: the level is given by the order in which the characters first appear in the file. Stick to one convention across the project. EasyHPC uses ``=`` above and below the page title, ``-`` for sections and ``*`` for subsections.
+
+
+Code
+****
+
+End a paragraph with ``::`` and indent the next block to display it as code::
+
+    $ echo "Hello, cluster"
+
+To choose the highlighting language, use the ``code-block`` directive:
+
+.. code-block:: rst
+
+    .. code-block:: python
+
+        print("Hello, cluster")
 
 
 Links
-*******
+*****
 
-In Sphinx, you have 2 type of links:
-    #. External links (http-like)
-    #. Implicit links to title
+External links:
 
-**External links**
+.. code-block:: rst
 
-If you want to create a link to a website, the syntax is ::
+    `Python <https://www.python.org>`__
 
-    `<http://www.python.org/>`__
+Links to another page of the documentation, using the file name without extension:
 
-which will appear as `<http://www.python.org/>`__ . Note the underscore after the final single quote. 
+.. code-block:: rst
 
-Since the full name of the link is not always simple or meaningful, you can specify a label (note the space between the label and link name)::
+    :doc:`sysadmin`
 
-    `Python <http://www.python.org/>`__
+Links to a section. Add a label before the section title, then refer to it from any page:
 
-The rendering is now: `Python <http://www.python.org/>`__. 
+.. code-block:: rst
 
-.. note:: If you have an underscore within the label/name, you got to escape it with a '\\' character.
+    .. _my-label:
 
-.. _implicit:
+    My section
+    ----------
 
-**Implicit Links to Titles**
-
-All titles are considered as hyperlinks. A link to a title is just its name within quotes and a final underscore::
-
-    `Codacy`__
-
-This syntax works only if the title and link are within the same RST file.
-If this is not the case, then you need to create a label before the title and refer to this new link explicitly.
+    See :ref:`my-label`.
 
 
-List and bullets
-******************
+Lists
+*****
 
-The following code::
+The source
+
+.. code-block:: rst
 
     * This is a bulleted list.
-    * It has two items, the second
-      item uses two lines. (note the indentation)
-
-    1. This is a numbered list.
-    2. It has two items too.
+    * It has two items. The second item
+      spans two lines (note the indentation).
 
     #. This is a numbered list.
-    #. It has two items too.
+    #. Sphinx numbers the items for you.
 
-gives:
+renders as:
 
 * This is a bulleted list.
-* It has two items, the second
-  item uses two lines. (note the indentation)
-
-1. This is a numbered list.
-2. It has two items too.
+* It has two items. The second item
+  spans two lines (note the indentation).
 
 #. This is a numbered list.
-#. It has two items too.
+#. Sphinx numbers the items for you.
 
-.. note:: if two lists are separated by a blanck line only, then the two lists are not differentiated as you can see above.
-
-If you want to learn more about .rst files just visit `Here <https://thomas-cokelaer.info/tutorials/sphinx/index.html>`__ .
+To learn more, see the `reStructuredText primer <https://www.sphinx-doc.org/en/master/usage/restructuredtext/basics.html>`__ in the Sphinx documentation.
 
 
+Build the documentation locally
+-------------------------------
 
-Travis CI
----------
+Before sending a pull request, build the pages on your computer and read them in a browser::
 
-`Travis CI <https://www.travis-ci.com/>`__ allows build the package and run unit tests. 
-So far, EasyHPC has a Travis check implemented, which just runs a Helloworld function. More tests will be incorporated once some code is added to the git repository.
+    $ pip install -r requirements.txt
+    $ sphinx-build -b html docs/source docs/build/html
+    $ open docs/build/html/index.html
 
-To add the Travis CI checks to a git repository (e.g. to EasyHPC):
+On Linux, replace ``open`` with ``xdg-open``. Sphinx prints a warning for every syntax error, with the file and line number.
 
-- In your git repository, create a ``.travis.yml`` template (see e.g. `this one <https://github.com/pescap/EasyHPC/blob/main/.travis.yml>`__);
-- Create an account on `Travis CI <https://www.travis-ci.com/>`__. It is recommended to link your GitHub account to Travis CI (at the beginning, choose the GitHub option when you sign up for Travis CI.
 
--  In your `Travis Repositories page <https://app.travis-ci.com/account/repositories>`__, activate the GitHub Apps Integration.
+GitHub Actions
+--------------
 
+`GitHub Actions <https://docs.github.com/en/actions>`__ runs workflows on GitHub's machines. Workflows are YAML files stored in `.github/workflows <https://github.com/pescap/EasyHPC/tree/main/.github/workflows>`__.
+
+EasyHPC's `docs.yml <https://github.com/pescap/EasyHPC/blob/main/.github/workflows/docs.yml>`__ builds the documentation on every pull request and on every push to ``main``:
+
+.. code-block:: yaml
+
+    name: Docs
+
+    on:
+      push:
+        branches: [main]
+      pull_request:
+
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v4
+          - uses: actions/setup-python@v5
+            with:
+              python-version: "3.12"
+          - run: pip install -r requirements.txt
+          - run: sphinx-build --keep-going -b html docs/source docs/build/html
+
+If the build fails, the pull request shows a red cross and the log of the failing step.
+
+
+Read the Docs
+-------------
+
+`Read the Docs <https://readthedocs.org>`__ builds and hosts the documentation at `easyhpc.readthedocs.io <https://easyhpc.readthedocs.io>`__. It rebuilds the site after every push to ``main``.
+
+Read the Docs requires a ``.readthedocs.yaml`` file at the root of the repository:
+
+.. code-block:: yaml
+
+    version: 2
+
+    build:
+      os: ubuntu-24.04
+      tools:
+        python: "3.12"
+
+    sphinx:
+      configuration: docs/source/conf.py
+
+    python:
+      install:
+        - requirements: requirements.txt
+
+To publish a project of your own, sign in to Read the Docs with your GitHub account and import the repository.
 
 
 Codacy
 ------
 
-`Codacy <https://www.codacy.com/>`__ is a very useful tool to produce clean code. To set up your git repository with Codacy:
+`Codacy <https://www.codacy.com/>`__ analyzes the code of a repository and reports style issues and possible bugs. To set it up:
 
-- Sign up for Codacy (it is recommend to use your GitHub account).
-- Add your repository to Codacy
-
+- Sign up for Codacy with your GitHub account.
+- Add your repository.
 
 
 Branch protection rules
 -----------------------
 
-To add rules to the pull requests and commits, you can set branch protection rules.
+Branch protection rules prevent direct pushes to ``main`` and can require a passing build and an approved review before merging.
 
-To do so, go to your git repository and click on ``Settings``, and then ``Branches``. Define your custom Branch protection rules.
+To set them up, go to your repository on GitHub, click on ``Settings`` and then ``Branches``, and add a rule for ``main``.
