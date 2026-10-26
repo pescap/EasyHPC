@@ -35,6 +35,12 @@ If you are new to all of this, read the pages in the order shown. If you already
 
       Linux shell, SSH, Jupyter on a remote server, GPUs, conda environments and Docker.
 
+   .. grid-item-card:: Working on a cluster
+      :link: cluster
+      :link-type: doc
+
+      SSH configuration, storage, modules, Apptainer and Slurm jobs.
+
    .. grid-item-card:: Horovod
       :link: horovod
       :link-type: doc
@@ -72,6 +78,7 @@ Found a typo, a broken command or a missing topic? :doc:`contributing` explains 
    :caption: Compute
 
    sysadmin
+   cluster
    horovod
 
 .. toctree::
