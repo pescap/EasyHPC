@@ -12,42 +12,42 @@ It started in 2022 as the shared notes of an undergraduate research course at Un
 Where to start
 --------------
 
-If you are new to all of this, read the pages in order. If you already know your way around Git and Linux, jump to the topic you need.
+If you are new to all of this, read the pages in the order shown. If you already know your way around Git and Linux, jump to the topic you need.
 
 .. grid:: 1 2 2 3
    :gutter: 3
 
-   .. grid-item-card:: 1. GitHub
+   .. grid-item-card:: GitHub
       :link: github
       :link-type: doc
 
       Fork a repository, work on a branch, open issues and send your first pull request.
 
-   .. grid-item-card:: 2. CI/CD
+   .. grid-item-card:: CI/CD
       :link: cicd
       :link-type: doc
 
       Write documentation in reStructuredText, build it with Sphinx and check every change with GitHub Actions.
 
-   .. grid-item-card:: 3. System administration
+   .. grid-item-card:: System administration
       :link: sysadmin
       :link-type: doc
 
       Linux shell, SSH, Jupyter on a remote server, GPUs, conda environments and Docker.
 
-   .. grid-item-card:: 4. Horovod
+   .. grid-item-card:: Horovod
       :link: horovod
       :link-type: doc
 
       Train a TensorFlow model on several GPUs at once.
 
-   .. grid-item-card:: 5. DeepXDE
+   .. grid-item-card:: DeepXDE
       :link: deepxde
       :link-type: doc
 
       Solve a Helmholtz equation with a physics-informed neural network.
 
-   .. grid-item-card:: 6. Neural network theory
+   .. grid-item-card:: Neural network theory
       :link: nn
       :link-type: doc
 
