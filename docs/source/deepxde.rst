@@ -2,132 +2,128 @@
 DeepXDE
 =======
 
+`DeepXDE <https://deepxde.readthedocs.io>`__ is a Python library for physics-informed neural networks (PINNs). This page installs it and solves a Helmholtz equation, step by step.
 
 
-MacOS/Linux Installation
-------------------------
+Installation
+------------
+
+DeepXDE runs on top of a deep learning library, called its backend: TensorFlow, PyTorch, JAX or PaddlePaddle. Work in a conda environment (see :doc:`sysadmin`) to avoid conflicts with other projects. For example, with the PyTorch backend::
+
+    $ conda create -n deepxde python=3.12
+    $ conda activate deepxde
+    $ pip install deepxde torch
+
+Choose the backend with the environment variable ``DDE_BACKEND`` when you run a script::
+
+    $ DDE_BACKEND=pytorch python my_script.py
+
+To check the installation, start Python and import the library::
+
+    $ DDE_BACKEND=pytorch python -c "import deepxde"
+
+The `installation guide <https://deepxde.readthedocs.io/en/latest/user/installation.html>`__ lists the versions supported for each backend.
 
 
-Requirements
-**************
+Use your own copy of DeepXDE
+****************************
 
-To run `DeepXDE <https://deepxde.readthedocs.io/en/latest/index.html>`__ on your local machine or a cluster, you need to install these dependencies:
-
-1. TensorFlow 2.x: `TensorFlow <https://www.tensorflow.org/>`__>= 2.2.0, `TensorFlow Probability <https://www.tensorflow.org/probability>`__>= 0.10.0
-2. `Matplotlib <https://matplotlib.org/>`__
-3. `Numpy <https://numpy.org/>`__
-4. `Scikit-learn <https://scikit-learn.org/stable/>`__
-5. `Scikit-optimize <https://scikit-optimize.github.io/stable/>`__
-6. `Scipy <https://scipy.org/>`__
-
-You can install these dependencies by these commands lines: ::
-
-    $ python -m pip install --upgrade pip
-    $ python -m pip install --user numpy scipy matplotlib ipython jupyter pandas sympy nose
-    $ pip install -U scikit-learn
-    $ pip install scikit-optimize
-
-We strongly recommend to use a `conda environment <https://easyhpc.readthedocs.io/en/latest/sysadmin.html#anaconda>`__ to avoid compatibility issues: ::
-
-    $ conda activate new_env
-    $ conda update --all
-    $ conda install numpy scipy matplotlib ipython jupyter pandas sympy nose
-    $ conda install -c conda-forge scikit-learn
-    $ conda install -c conda-forge scikit-optimize
-    $ conda install -c conda-forge deepxde
-
-Once TensorFlow and DeepXDE were installed, you can check if the installation was successful running a IPython or Jupyter session and importing the library on it.
-
-
-Run custom version of DeepXDE
-*******************************
-
-The first step is to clone the library repository in your computer cluster using git: ::
+To modify DeepXDE itself, clone the repository (or your fork of it, see :doc:`github`) and install it in editable mode, so that Python uses your copy of the code::
 
     $ git clone https://github.com/lululxvi/deepxde.git
+    $ cd deepxde
+    $ pip install -e .
 
-Second step, change Python PATH to the library directory: ::
-
-    $ export PYTHONPATH=$PYTHONPATH:<path_to_deepxde_folder>
-
-One time the repository was clone and the PATH was updated, you are ready to run some library examples that are located in the examples directory.
+The ``examples`` directory of the repository contains many ready-to-run problems.
 
 
-
-Solving a Time-independent PDE
+Solving a time-independent PDE
 ------------------------------
 
-.. important:: 
+.. note::
 
-    For the original solution you can go to the 
-    `DeepXDE documentation <https://deepxde.readthedocs.io/en/latest/demos/pinn_forward/helmholtz.2d.dirichlet.html>`__.
+    This example follows `Helmholtz equation over a 2D square domain <https://deepxde.readthedocs.io/en/latest/demos/pinn_forward/helmholtz.2d.dirichlet.html>`__ in the DeepXDE documentation. The full script is `Helmholtz_Dirichlet_2d.py <https://github.com/lululxvi/deepxde/blob/master/examples/pinn_forward/Helmholtz_Dirichlet_2d.py>`__.
 
-Given a wavenumber: :math:`k_{0}=2\pi n` with :math:`n=2`.
 
-You will solve a Helmholtz equation:
+Problem
+*******
 
-.. math:: - u_{xx} - u_{yy} - {k^2}_0u=f,\qquad \Omega={[0,1]}^2
+Given the wavenumber :math:`k_0 = 2\pi n` with :math:`n = 2`, we solve the Helmholtz equation
 
-Where :math:`f`:
+.. math::
 
-.. math:: f(x,y)={k^2}_0\sin{(k_0x)}\sin{(k_0y)}
+    -u_{xx} - u_{yy} - k_0^2 u = f, \qquad (x, y) \in \Omega = [0, 1]^2,
 
-With the Dirichlet boundary conditions:
+with the source term
 
-.. math:: u(x,y)=0,\qquad (x,y) \in \partial \Omega
+.. math::
 
-And finally, the solution is:
+    f(x, y) = k_0^2 \sin(k_0 x) \sin(k_0 y)
 
-.. math:: u(x,y)=\sin{(k_0x)}\sin{(k_0y)}
+and the Dirichlet boundary condition
 
-First, import DeepXDE, Numpy, and TensorFlow (for this example) modules::
+.. math::
+
+    u(x, y) = 0, \qquad (x, y) \in \partial \Omega.
+
+The exact solution is
+
+.. math::
+
+    u(x, y) = \sin(k_0 x) \sin(k_0 y).
+
+
+Step by step
+************
+
+Import DeepXDE and NumPy::
 
     import deepxde as dde
     import numpy as np
-    from deepxde.backend import tf
 
-Now, define the general variables of the problem::
+Define the parameters of the problem: the number of training and test points per wavelength, whether the boundary condition is imposed exactly (``hard_constraint``), the weight of the boundary loss when it is not, and the number of training iterations::
 
     n = 2
     precision_train = 10
     precision_test = 30
     hard_constraint = True
     weights = 100
+    iterations = 5000
 
-Defining the epochs (number of steps), the learning rate, the number of layers and nodes, and the activation function::
-    
-    epochs = 10000
-    parameters = [1e-3, 3, 150, "sin"]
-        
-    sin = tf.sin
-    
-    learning_rate, num_dense_layers, num_dense_nodes, activation_func = parameters
+Define the learning rate, the number of hidden layers, the number of neurons per layer and the activation function::
 
-Now, we define the PDE residual of the principal equation::
+    learning_rate, num_dense_layers, num_dense_nodes, activation = 1e-3, 3, 150, "sin"
 
-    def pde(x,u):
-        dy_xx = dde.grad.hessian(u,x,i=0,j=0)
-        dy_yy = dde.grad.hessian(u,x,i=1,j=1)
+Define the residual of the PDE. ``x`` holds the coordinates :math:`(x, y)` of a batch of points and ``u`` the output of the network at those points::
 
-        f = k0**2*sin(k0*x[:,0:1])*sin(k0*x[:,1:2])
-        return -dy_xx-dy_yy-k0**2*u-f
+    sin = dde.backend.sin
 
-**Note**: The first input is both variables, x and y, because they are the domain. The second argument is the solution :math:`u(x)`.
+    def pde(x, u):
+        u_xx = dde.grad.hessian(u, x, i=0, j=0)
+        u_yy = dde.grad.hessian(u, x, i=1, j=1)
+        f = k0**2 * sin(k0 * x[:, 0:1]) * sin(k0 * x[:, 1:2])
+        return -u_xx - u_yy - k0**2 * u - f
 
-Now, we introduce the exact solution::
+``dde.backend.sin`` works with any backend. The function uses ``k0``, which is defined below, before the training starts.
 
-    def exact_func(x):
-        return np.sin(k0*x[:,0:1])*np.sin(k0*x[:,1:2])
-    
-    def transformation(x,u):
-        res = x[:,0:1]*(1-x[:,0:1])*x[:,1:2]*(1-x[:,1:2])
-        return res*u
+Define the exact solution, used to measure the error::
 
-Now, we define the domain as a rectangle and evaluate the training and test random collocation points. 
-This values allow us to obtain collocation points density of 10 (respect 30) points per wavelength along each direction::
+    def func(x):
+        return np.sin(k0 * x[:, 0:1]) * np.sin(k0 * x[:, 1:2])
 
-    geom = dde.geometry.Rectangle([0,0],[1,1])
-    k0 = 2*np.pi*n
+With ``hard_constraint = True``, the boundary condition is built into the network: its output is multiplied by :math:`x(1-x)y(1-y)`, which vanishes on the boundary of the square. Otherwise, the boundary condition is added to the loss::
+
+    def transform(x, u):
+        res = x[:, 0:1] * (1 - x[:, 0:1]) * x[:, 1:2] * (1 - x[:, 1:2])
+        return res * u
+
+    def boundary(_, on_boundary):
+        return on_boundary
+
+Define the domain, the wavenumber and the number of points along each direction. With 10 points per wavelength for training and 30 for testing::
+
+    geom = dde.geometry.Rectangle([0, 0], [1, 1])
+    k0 = 2 * np.pi * n
     wave_len = 1 / n
 
     hx_train = wave_len / precision_train
@@ -136,86 +132,94 @@ This values allow us to obtain collocation points density of 10 (respect 30) poi
     hx_test = wave_len / precision_test
     nx_test = int(1 / hx_test)
 
-    bc = []
+    if hard_constraint:
+        bc = []
+    else:
+        bc = dde.icbc.DirichletBC(geom, lambda x: 0, boundary)
 
-Then, we group all of our data and generate the training and testing points::
+Group the PDE, the boundary condition and the training and test points::
 
-    data = dde.data.PDE (
+    data = dde.data.PDE(
         geom,
         pde,
         bc,
-        num_domain = nx_train**2,
-        num_boundary = 4*nx_train,
-        solution = exact_func,
-        num_test = nx_test**2,
+        num_domain=nx_train**2,
+        num_boundary=4 * nx_train,
+        solution=func,
+        num_test=nx_test**2,
     )
 
-Now, it's time to choose the network. In this example, we use a fully connected nerual network of depth 4 (3 hidden layers) and width of 150.
-The activation function in this case is `sin` and `Glorot uniform` as initializer::
+Build a fully connected network with 2 inputs, 3 hidden layers of 150 neurons and 1 output, with the ``sin`` activation and the Glorot uniform initializer::
 
-    network = dde.nn.NN(
-        [2] + [numb_dense_nodes]*num_dense_layers + [1], activation, "Glorot uniform"
+    net = dde.nn.FNN(
+        [2] + [num_dense_nodes] * num_dense_layers + [1], activation, "Glorot uniform"
     )
-    
-    net.apply_output_transform(transform)
 
-Now, we have the PDE and the network. With this we build a `Model` and define the optimizer and learning rate::
+    if hard_constraint:
+        net.apply_output_transform(transform)
+
+Build the model and choose the Adam optimizer. The metric is the relative :math:`L^2` error against the exact solution::
 
     model = dde.Model(data, net)
 
-    loss_weights = [1, weights]
-    model.compile(
-        "adam",
-        lr = learning_rate,
-        metrics = ["l2 relative error"],
-    )
+    if hard_constraint:
+        model.compile("adam", lr=learning_rate, metrics=["l2 relative error"])
+    else:
+        model.compile(
+            "adam",
+            lr=learning_rate,
+            metrics=["l2 relative error"],
+            loss_weights=[1, weights],
+        )
 
-We will train the model for :math:`10000` iterations with Adam optimizer::
+Train the model and save the loss history and the solution::
 
-    losshistory, train_state = model.train(epochs = epochs)
-
-Saving the plots::
-
-    dde.saveplot(losshistory, train_state, issave = True, isplot = True)
+    losshistory, train_state = model.train(iterations=iterations)
+    dde.saveplot(losshistory, train_state, issave=True, isplot=True)
 
 
-Full Code
-***********
+Full code
+*********
+
 ::
 
     import deepxde as dde
     import numpy as np
-    from deepxde.backend import tf
 
     n = 2
     precision_train = 10
     precision_test = 30
     hard_constraint = True
     weights = 100
-    
-    epochs = 10000
-    parameters = [1e-3, 3, 150, "sin"]
-        
-    sin = tf.sin
-    
-    learning_rate, num_dense_layers, num_dense_nodes, activation_func = parameters
+    iterations = 5000
 
-    def pde(x,u):
-        dy_xx = dde.grad.hessian(u,x,i=0,j=0)
-        dy_yy = dde.grad.hessian(u,x,i=1,j=1)
+    learning_rate, num_dense_layers, num_dense_nodes, activation = 1e-3, 3, 150, "sin"
 
-        f = k0**2*sin(k0*x[:,0:1])*sin(k0*x[:,1:2])
-        return -dy_xx-dy_yy-k0**2*u-f
+    sin = dde.backend.sin
 
-    def exact_func(x):
-        return np.sin(k0*x[:,0:1])*np.sin(k0*x[:,1:2])
-    
-    def transformation(x,u):
-        res = x[:,0:1]*(1-x[:,0:1])*x[:,1:2]*(1-x[:,1:2])
-        return res*u
 
-    geom = dde.geometry.Rectangle([0,0],[1,1])
-    k0 = 2*np.pi*n
+    def pde(x, u):
+        u_xx = dde.grad.hessian(u, x, i=0, j=0)
+        u_yy = dde.grad.hessian(u, x, i=1, j=1)
+        f = k0**2 * sin(k0 * x[:, 0:1]) * sin(k0 * x[:, 1:2])
+        return -u_xx - u_yy - k0**2 * u - f
+
+
+    def func(x):
+        return np.sin(k0 * x[:, 0:1]) * np.sin(k0 * x[:, 1:2])
+
+
+    def transform(x, u):
+        res = x[:, 0:1] * (1 - x[:, 0:1]) * x[:, 1:2] * (1 - x[:, 1:2])
+        return res * u
+
+
+    def boundary(_, on_boundary):
+        return on_boundary
+
+
+    geom = dde.geometry.Rectangle([0, 0], [1, 1])
+    k0 = 2 * np.pi * n
     wave_len = 1 / n
 
     hx_train = wave_len / precision_train
@@ -224,40 +228,46 @@ Full Code
     hx_test = wave_len / precision_test
     nx_test = int(1 / hx_test)
 
-    bc = []
+    if hard_constraint:
+        bc = []
+    else:
+        bc = dde.icbc.DirichletBC(geom, lambda x: 0, boundary)
 
-    data = dde.data.PDE (
+    data = dde.data.PDE(
         geom,
         pde,
         bc,
-        num_domain = nx_train**2,
-        num_boundary = 4*nx_train,
-        solution = exact_func,
-        num_test = nx_test**2,
+        num_domain=nx_train**2,
+        num_boundary=4 * nx_train,
+        solution=func,
+        num_test=nx_test**2,
     )
 
     net = dde.nn.FNN(
-       [2] + [num_dense_nodes] * num_dense_layers + [1], activation, "Glorot uniform"
+        [2] + [num_dense_nodes] * num_dense_layers + [1], activation, "Glorot uniform"
     )
 
-    net.apply_output_transform(transform)
+    if hard_constraint:
+        net.apply_output_transform(transform)
 
     model = dde.Model(data, net)
 
-    loss_weights = [1, weights]
-    model.compile(
-        "adam",
-        lr = learning_rate,
-        metrics = ["l2 relative error"],
-    )
+    if hard_constraint:
+        model.compile("adam", lr=learning_rate, metrics=["l2 relative error"])
+    else:
+        model.compile(
+            "adam",
+            lr=learning_rate,
+            metrics=["l2 relative error"],
+            loss_weights=[1, weights],
+        )
 
-    losshistory, train_state = model.train(epochs = epochs)
-    dde.saveplot(losshistory, train_state, issave = True, isplot = True)
-
+    losshistory, train_state = model.train(iterations=iterations)
+    dde.saveplot(losshistory, train_state, issave=True, isplot=True)
 
 
 Bibliography
 ------------
 
-- DeepXDE: A Deep Learning Library for solving differential equations, Lu, Lu and Meng, Xuhui and Mao, Zhiping and Karniadakis, George Em, SIAM Review (2021) [`link <https://epubs.siam.org/doi/pdf/10.1137/19M1274067>`__]
-- Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations, M. Raissi and P. Perdikaris and G.E. Karniadakis, Journal of Computational Physics (2019) [`link <https://www.sciencedirect.com/science/article/pii/S0021999118307125>`__]
+- L. Lu, X. Meng, Z. Mao and G. E. Karniadakis. DeepXDE: A deep learning library for solving differential equations. *SIAM Review*, 63(1):208–228, 2021. `doi:10.1137/19M1274067 <https://doi.org/10.1137/19M1274067>`__
+- M. Raissi, P. Perdikaris and G. E. Karniadakis. Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. *Journal of Computational Physics*, 378:686–707, 2019. `doi:10.1016/j.jcp.2018.10.045 <https://doi.org/10.1016/j.jcp.2018.10.045>`__
