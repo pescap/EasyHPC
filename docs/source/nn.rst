@@ -2,256 +2,137 @@
 Neural Network Theory
 =====================
 
-
-.. todo:: 
-
-    To do. Explain the theory for inverse problems, and add references.
+This page explains what a neural network computes, why it is trained by minimizing a mean squared error, and how physics-informed neural networks (PINNs) use the same ideas to solve differential equations.
 
 
-Summary of typical industrial process engineering problems
-----------------------------------------------------------
+Neural networks
+---------------
 
-As a review of theory and physical concepts, you can find the class readings by Professor María Thomsen Solis from the Adolfo Ibáñez University and the python file made by Artemio Araya. Completion of this teaching material will continue to be developed after the project.
+In simple terms, a neural network is a function with parameters that can be tuned to fit data.
 
-====
+A fully connected network with :math:`L` layers takes an input vector :math:`x` and computes
 
-**Momentum Conservation**
+.. math::
 
-`M.T Class Lectures <https://drive.google.com/file/d/1BlXg5ymmiAKZ5J5dcu6JQZWL5Yius6QL/view?usp=sharing>`__.
+    a^{(0)} = x, \qquad
+    a^{(l)} = \sigma\left( W^{(l)} a^{(l-1)} + b^{(l)} \right), \quad l = 1, \dots, L-1, \qquad
+    h_\theta(x) = W^{(L)} a^{(L-1)} + b^{(L)}.
 
-Python File: https://colab.research.google.com/drive/1PhjGNHVIGK0Jek4NyEskEKfb3Ihl9LZy?usp=sharing
+- :math:`W^{(l)}` is the weight matrix and :math:`b^{(l)}` the bias vector of layer :math:`l`. Together they form the parameters :math:`\theta` of the network.
+- :math:`\sigma` is a nonlinear function applied to each entry, called the activation function. Common choices are ReLU, the sigmoid, :math:`\tanh` and :math:`\sin`.
+- The number of rows of :math:`W^{(l)}` is the number of neurons of layer :math:`l`.
 
-====
+For example, a network with 3 inputs, two hidden layers of 3 and 2 neurons, and 1 output computes
 
-**Cinematic**
+.. math::
 
-`M.T Class Lectures <https://drive.google.com/file/d/1YhQSburG66JWN0IEQgdkFFf3OaXRe2GT/view?usp=sharing>`__.
+    h_\theta(x) = W^{(3)} \sigma\left( W^{(2)} \sigma\left( W^{(1)} x + b^{(1)} \right) + b^{(2)} \right) + b^{(3)},
 
-Python File: https://colab.research.google.com/drive/1f8_eslVUXN0-8IDR3ASJoHXNIMRTH7oL?usp=sharing
+with :math:`W^{(1)} \in \mathbb{R}^{3 \times 3}`, :math:`W^{(2)} \in \mathbb{R}^{2 \times 3}` and :math:`W^{(3)} \in \mathbb{R}^{1 \times 2}`. For regression, the last layer has no activation, as above.
 
-====
+In the physics problems of this guide, the input is a point in space or in space-time, for example :math:`(x, y)` or :math:`(t, x)`. The output is either
 
-**Static**
+- a scalar field, such as a temperature or a mass density, or
+- a vector field, such as a velocity, a heat flux or an electric field.
 
-`M.T Class Lectures <https://drive.google.com/file/d/1QERWlV-Ztj2wzNyQ8vWU8euGz42OO7R6/view?usp=sharing>`__.
+These videos by Andrew Ng give an intuitive introduction:
 
-Python File: `<https://colab.research.google.com/drive/1E2HEK9027jVSRXRMAz5m2LPH0_wtlFtE?usp=sharing>`__
-
-====
-
-**Fluyid Dynamics**
-
-`M.T Class Lectures <https://drive.google.com/file/d/1BxTonblF8azjkXSE-xcZeW8Qyyy8xRzP/view?usp=sharing>`__.
-
-Python File: https://colab.research.google.com/drive/1C82mvWWrylb3vxYrxfU0TRjgb6NntUfd?usp=sharing
-
-`M.T Class Lectures <https://drive.google.com/file/d/140Gbbw9qTX1EN4t7PYPgFnUYadKAPk85/view?usp=sharing>`__.
-
-Python File: https://colab.research.google.com/drive/1ftpYxW6-W1iypHdhIPFn7MFofvb26gNm?usp=sharing
+- `What is a neural network? <https://www.youtube.com/watch?v=n1l-9lIMW7E>`__
+- `Supervised learning with a neural network <https://www.youtube.com/watch?v=BYGpKPY9pO0>`__
 
 
-`M.T Class Lectures <https://drive.google.com/file/d/1lpRTIV1evP8OF2US6XV1EnTfpjCHtbeZ/view?usp=sharing>`__.
-
-Python File: https://colab.research.google.com/drive/1bC4P4eJ6GHxDjwqHh73IT9ubplW9VA99?usp=sharing
-
-====
-
-**Heat Transfer**
-
-`M.T Class Lectures <https://drive.google.com/file/d/1YGLTkY-rtHdX8B21JP-L_OlvebzcE9zY/view?usp=sharing>`__.
-
-`M.T Class Lectures <https://drive.google.com/file/d/1W-3-1duyDI8AZVkgq9e_KdDxvRN4ptUU/view?usp=sharing>`__.
-
-Python File: `<https://colab.research.google.com/drive/1q7A5HT_-1zoukSDZyjal9FPLG_imlm6J?usp=sharing>`__
-
-Python File: `<https://colab.research.google.com/drive/1JUzUBPEuqnKYCxo6BxNY5sAM3XhbzxeH?usp=sharing>`__
-
-Pyhton File: `<https://colab.research.google.com/drive/12tM7aDL9_stv7w-v2CeNoZcpgN9NFBf5?usp=sharing>`__
-
-**Heat Transfer Equation**
-
-`M.T Class Lectures <https://drive.google.com/file/d/1zayz8u5zzlt4zTrH9YxvT7nx6CgPJBKC/view?usp=sharing>`__.
-
-Python File: https://colab.research.google.com/drive/1-wCq3TP-9sM7eR7pZ8GUVish4iuIQRMw?usp=sharing
-
-====
-
-**Internal convection**
-
-`M.T Class Lectures <https://drive.google.com/file/d/1NvxHsg0PqwW3cjcR9sYD_jrlve6qPd-G/view?usp=sharing>`__.
-
-Python File: https://colab.research.google.com/drive/16DrJ7VjDnYzaS0USNcz8upAiVFYQG5HF?usp=sharing
-
-====
-
-**External, Internal and Natural Forced Convection**
-
-`M.T Class Lectures`.
-
-Python File: https://colab.research.google.com/drive/19Zq49drvMXavEuzHfWjyTLdhy7crHzZs?usp=sharing
-
-====
-
-**External Convection**
-
-`M.T Class Lectures <https://drive.google.com/file/d/1L1gyne2TV_EMGuxnGup-AIyEHFRVVNPf/view?usp=sharing>`__.
-
-Python File: https://colab.research.google.com/drive/1IAfHsnjMZhQe0GETiYm_dv6Kplqkph5e?usp=sharing
-
-
-====
-
-**Electromagnetism**
-
-Python File: https://colab.research.google.com/drive/1Fb-Uq1kwUgKcxmRui3k7GBmjz3833q1u?usp=sharing
-
-Python File: https://colab.research.google.com/drive/1hafIuEqEhiioZpQajJWUt6aSsPjIFx2V?usp=sharing
-
-
-====
-
-Neural Networks Intuitive Approach
+Training: why a mean squared error
 ----------------------------------
-In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
-data.
 
-.. image:: Image/NeuralNetworkbyAndrewNg.png
-    :alt: (by Andrew Ng, Machine Learning Coursera)
+Suppose we measure a field :math:`u` with :math:`K` components at points :math:`x_1, \dots, x_m`, and that each measurement has an instrument error:
 
-.. image:: Image/RedExplicadaT.png
-    :alt: by Andrew Ng, Machine Learning Coursera
+.. math::
 
-Below this photo you can find the same neural network that Andrew Ng shows in his video, but in vectorized form.
+    y_i = u(x_i) + \varepsilon_i, \qquad \varepsilon_i \sim \mathcal{N}(0, s^2 I), \quad i = 1, \dots, m,
 
-As shown in the figure, this neural network have an input pattern vector s of 3 dimensions. And a output predicted response of 1 dimension.
+with independent errors. We use the network to approximate :math:`u`. The likelihood of the parameters :math:`\theta` given the measurements is
 
-- The layer 1 have 0 neurons.
-- The layer 2 have 3 neurons.
-- The layer 3 have 2 neurons.
-- The layer 4 have 1 neuron.
+.. math::
 
-For any layer the neurons takes the information of the prevoius layers as a lineal combination of weight and basis parameters, and apply a nonlineal
-transformation. Typical nonlineal transformations can be ReLU, Sigmoid, Tanh, etc ...
+    \mathcal{L}(\theta) = \prod_{i=1}^{m} \frac{1}{(2 \pi s^2)^{K/2}} \exp\left( -\frac{\| y_i - h_\theta(x_i) \|^2}{2 s^2} \right),
 
-There exist many other activations functions. The structure and other propieties of neural networks are goning to be discussed in Mathematical Statistics Section.
+so that
 
-In this project, we will use neural networks with only 2 input patern vector that can be the following:
+.. math::
 
-- time and a spatial variable
-- two spatial variables
+    -\log \mathcal{L}(\theta) = \frac{1}{2 s^2} \sum_{i=1}^{m} \| y_i - h_\theta(x_i) \|^2 + \text{constant}.
 
-And a output pattern vector that can be:
+Maximizing the likelihood is therefore the same as minimizing the mean squared error (MSE)
 
-- a vector belonging to a vector field (For example: Electric Field, Magnetic Field, heat flux, Force field)
-- scalar value belonging to a scalar field (Temperature, mass density)
+.. math::
 
-To optimize the model we need data. Different points in space-time or space-space associated vectors or scalar value belonging to our vector or scalar field.
+    J(\theta) = \frac{1}{m} \sum_{i=1}^{m} \| y_i - h_\theta(x_i) \|^2.
 
-First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database. This type of cost function (loss function) commonly originates when we assume that the values that we want to predict in the database have a random error that distributes normally with constant covariance matrix, and that these random error can also be related.
+This is why MSE is the default loss of most regression problems. In DeepXDE, ``Model.compile`` uses ``loss="MSE"`` by default.
 
-Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
+The loss is minimized by gradient descent. Starting from random parameters, each step moves them against the gradient:
 
-We will update our parameters by multiplying the vector obtained by a lambda scalar number and adding it to the vector with which we calculate the gradient of the cost function. We will go through this process many times (each process is a particular epoch), each time reducing the error variance of our predictions.
+.. math::
 
-Then with the gradient descent it varies its parameters until it reaches the optimal solution.
+    \theta_{k+1} = \theta_k - \eta \, \nabla_\theta J(\theta_k),
 
-These videos explain in a more intuitive way how neural networks work.
-
-What is a neural network?
-https://www.youtube.com/watch?v=n1l-9lIMW7E&list=PLpFsSf5Dm-pd5d3rjNtIXUHT-v7bdaEIe&index=2
-
-Supervised Learning with a Neural Network
-https://www.youtube.com/watch?v=BYGpKPY9pO0
-
-Mathematic Details About Deep Neural Networks applied to Physics
-https://www.overleaf.com/5389572137znnjcpqctqxj
-
-Hypotesis Testing
------------------
-
-If we have a vector field or K dimensions or a scalar field of 1 dimension, and a random experiment that consists of measuring those vectors of interest for different points in time-space, then we can use the Maximum Likelihood Method 
-and an evaluation metric to determine if to determine whether we can indeed use the neural network to approximate the vector or scalar field of interest.
-
-- Our null hypothesis is that there exist the relationship and it is the one trained using the train data.
-
-- The alternative hypothesis is that the trained network does not approximate the vector or scalar function of interest.
+where :math:`\eta > 0` is the learning rate. The gradient is computed by backpropagation, that is, by applying the chain rule layer by layer. In practice, variants such as Adam are used, and each step uses a random subset of the data (a mini-batch). One pass over the whole dataset is called an epoch.
 
 
-The randomness of the measurements is based on the idea that we have a measurement error of the instrument used in the laboratory.
+Physics-informed neural networks
+--------------------------------
 
-Now we can then use it to predict new values that have not been observed in the database.
+A PINN approximates the solution :math:`u` of a differential equation with a network :math:`h_\theta`. Consider a problem
 
+.. math::
 
-**Maximum Likelihood Method**
+    \mathcal{N}[u] = f \ \text{in } \Omega, \qquad \mathcal{B}[u] = g \ \text{on } \partial\Omega,
 
-If we want to estimate a vector field of K dimensions or a scalar field of 1 dimension.
+where :math:`\mathcal{N}` is a differential operator and :math:`\mathcal{B}` gives the boundary condition. The network is trained to minimize
 
-Assuming that at a point in space we have a point vector of interest that has an associated probability density distribution due to random measurement error, where the expectation of said vector is the value of interest, then for a point sample or realizations of such a measurement experiment, we define the likelihood function of the sample as follows.
+.. math::
 
-.. image:: Image/MLEPhoto.png
-    :alt: (deepxde library)
+    J(\theta) = \frac{1}{m_r} \sum_{i=1}^{m_r} \left| \mathcal{N}[h_\theta](x_i) - f(x_i) \right|^2
+    + \frac{\lambda}{m_b} \sum_{j=1}^{m_b} \left| \mathcal{B}[h_\theta](z_j) - g(z_j) \right|^2,
 
-It is mathematically provable that the likelihood defined in this way is the equivalent of reducing a type of mean square error, or what is popularly known as MLE.
-
-**Precisely in the deepxde library we do not carry out this procedure**
-
-We assume that there is a relationship between the expectation of these random vectors as a function of a point in space. We use the neural network to parameterize the expectation of our random vectors for different points in space.
-
-We assume that there is independence between the different vectors observed in the database.
-
-Physics Informed Neural Networks (PINNs) vs Finite Element Method (FEM)
------------------------------------------------------------------------
-
-FEM is a commonly used method for **numerically** solving differential equiations in engeneering and mathematical modeling. This method is very popular for solving problems in traditional fields like heat transfer, fluid flow, electromagnetic potential and even FEM based programs to run simulations. FEM is based on discretization in the given space dimensions, so it creates a discrete **mesh** of the continuous to compute approximations of the values in the nods of the mesh solving a system of equations via **linear** algebra.
-
-PINNS on the other hand give a more robust solution based on a non-linear function represented by a neural network instead of solving the matrix of equations in FEM. The parameters are no longer linked to points values in the space as they are replaced with the weights and biases of the loss function wich is a nonlinear and nonconvex function respect to its parameter theta. Going into the training we have our biggest advantage so far as we can feed our NN with scattered points because this model does not require a mesh for this operation. Lastly our neural network can manage solving its loss function through multiple dimensions because each layer of the neuron is differentiable, so it is the loss function, then we can optimize it via a gradient based algorithm using the backpropagation algorithm.
-
-PINNs have the capability to compute high dimensional fields.
-
-**Theory Behind Inverse Problems** (To do. Explain the theory for inverse problems, and add references.)
+where the :math:`x_i` are collocation points inside :math:`\Omega`, the :math:`z_j` points on its boundary and :math:`\lambda > 0` a weight. The derivatives of the network in :math:`\mathcal{N}` are computed exactly by automatic differentiation. When measurements are available, their MSE is added to the loss. :doc:`deepxde` solves a Helmholtz equation this way.
 
 
+Inverse problems
+****************
 
-**Neural Networks**
-
-In simple terms, a neural network is a function with the particular ability to learn to predict complex patterns using
-data.
-
-.. image:: Image/NeuralNetworkbyAndrewNg.png
-    :alt: by Andrew Ng, Machine Learning Coursera
+In an inverse problem, some coefficients of the equation are unknown, for example a diffusivity or a wave speed, and measurements of the solution are available. The unknown coefficients become trainable parameters alongside :math:`\theta`, and the loss includes the misfit with the measurements. Minimizing it recovers both the solution and the coefficients. In DeepXDE, an unknown coefficient is declared with ``dde.Variable`` and passed to ``Model.compile`` through ``external_trainable_variables``.
 
 
+PINNs and the finite element method
+***********************************
 
-.. image:: Image/RedNeuronal.png
+The finite element method (FEM) is the standard tool to solve differential equations in engineering, for problems such as heat transfer, fluid flow and electromagnetism. It divides the domain into a mesh, approximates the solution with a piecewise polynomial on each element, and computes the coefficients by solving a sparse linear system. FEM is mature, comes with error estimates, and is fast for forward problems in two and three dimensions.
 
-As shown in the figure, the layer of neurons is represented with a non-linear transformation. In each layer shown in Figure 1, the network uses the same activation function (non-linear transformation in Figure 2).
+PINNs approximate the solution with a neural network instead. They need no mesh, only scattered collocation points. Their loss is nonlinear and nonconvex in the parameters and is minimized by gradient descent, which gives no guarantee of reaching the best network. Their strengths are that forward and inverse problems are written with the same code, that measurements are easy to add to the loss, and that they extend to high-dimensional problems where a mesh is not affordable. For standard forward problems in low dimension, PINNs are usually slower and less accurate than FEM (see Grossmann et al., 2024).
 
-There are many activation functions
 
-On this occasion, we will use this type of architecture to approach the nature of vector and scalar fields applied to
-physics.
+Course material
+---------------
 
-To optimize the model we need data. Different points in space-time with associated vectors belonging to our vector or scalar field.
+The engineering problems below come from the course of Professor María Thomsen Solís at Universidad Adolfo Ibáñez. Artemio Araya wrote a Python notebook for each topic, on Google Colab.
 
-First, we will use the maximum likelihood method to define the optimization problem, which under a series of assumptions consists of find the parameters of the network that minimizes a type of mean square error (the loss function) between the predictions and the values observed in the database.
-
-Second, we will use the gradient descent algorithm to find the network parameters that best fit our predictions.
-
-To complete with the previous task, we will use the backpropagation algorithm to calculate in each "epoch" the evaluation in the gradient function of the cost function for a particular network parameters (A concatenation of arrays with real numbers).
-
-Then with the gradient descent it varies its parameters until it reaches the optimal solution.
-
-These videos explain in a more intuitive way how neural networks work.
-
-What is a neural network?
-https://www.youtube.com/watch?v=n1l-9lIMW7E&list=PLpFsSf5Dm-pd5d3rjNtIXUHT-v7bdaEIe&index=2
-Supervised Learning with a Neural Network
-https://www.youtube.com/watch?v=BYGpKPY9pO0
-
-Mathematic Details About Deep Neural Networks applied to Physics
-https://www.overleaf.com/5389572137znnjcpqctqxj
+- Momentum conservation: `notebook <https://colab.research.google.com/drive/1PhjGNHVIGK0Jek4NyEskEKfb3Ihl9LZy?usp=sharing>`__
+- Kinematics: `notebook <https://colab.research.google.com/drive/1f8_eslVUXN0-8IDR3ASJoHXNIMRTH7oL?usp=sharing>`__
+- Statics: `notebook <https://colab.research.google.com/drive/1E2HEK9027jVSRXRMAz5m2LPH0_wtlFtE?usp=sharing>`__
+- Fluid dynamics: `notebook 1 <https://colab.research.google.com/drive/1C82mvWWrylb3vxYrxfU0TRjgb6NntUfd?usp=sharing>`__, `notebook 2 <https://colab.research.google.com/drive/1ftpYxW6-W1iypHdhIPFn7MFofvb26gNm?usp=sharing>`__, `notebook 3 <https://colab.research.google.com/drive/1bC4P4eJ6GHxDjwqHh73IT9ubplW9VA99?usp=sharing>`__
+- Heat transfer: `notebook 1 <https://colab.research.google.com/drive/1q7A5HT_-1zoukSDZyjal9FPLG_imlm6J?usp=sharing>`__, `notebook 2 <https://colab.research.google.com/drive/1JUzUBPEuqnKYCxo6BxNY5sAM3XhbzxeH?usp=sharing>`__, `notebook 3 <https://colab.research.google.com/drive/12tM7aDL9_stv7w-v2CeNoZcpgN9NFBf5?usp=sharing>`__
+- Heat equation: `notebook <https://colab.research.google.com/drive/1-wCq3TP-9sM7eR7pZ8GUVish4iuIQRMw?usp=sharing>`__
+- Internal convection: `notebook <https://colab.research.google.com/drive/16DrJ7VjDnYzaS0USNcz8upAiVFYQG5HF?usp=sharing>`__
+- External, internal and natural convection: `notebook <https://colab.research.google.com/drive/19Zq49drvMXavEuzHfWjyTLdhy7crHzZs?usp=sharing>`__
+- External convection: `notebook <https://colab.research.google.com/drive/1IAfHsnjMZhQe0GETiYm_dv6Kplqkph5e?usp=sharing>`__
+- Electromagnetism: `notebook 1 <https://colab.research.google.com/drive/1Fb-Uq1kwUgKcxmRui3k7GBmjz3833q1u?usp=sharing>`__, `notebook 2 <https://colab.research.google.com/drive/1hafIuEqEhiioZpQajJWUt6aSsPjIFx2V?usp=sharing>`__
 
 
 Bibliography
 ------------
 
+- I. Goodfellow, Y. Bengio and A. Courville. *Deep Learning*. MIT Press, 2016. `deeplearningbook.org <https://www.deeplearningbook.org>`__
+- M. Raissi, P. Perdikaris and G. E. Karniadakis. Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. *Journal of Computational Physics*, 378:686–707, 2019. `doi:10.1016/j.jcp.2018.10.045 <https://doi.org/10.1016/j.jcp.2018.10.045>`__
+- L. Lu, X. Meng, Z. Mao and G. E. Karniadakis. DeepXDE: A deep learning library for solving differential equations. *SIAM Review*, 63(1):208–228, 2021. `doi:10.1137/19M1274067 <https://doi.org/10.1137/19M1274067>`__
+- T. G. Grossmann, U. J. Komorowska, J. Latz and C.-B. Schönlieb. Can physics-informed neural networks beat the finite element method? *IMA Journal of Applied Mathematics*, 89(1):143–174, 2024. `doi:10.1093/imamat/hxae011 <https://doi.org/10.1093/imamat/hxae011>`__
