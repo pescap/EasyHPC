@@ -59,6 +59,12 @@ If you are new to all of this, read the pages in the order shown. If you already
 
       Train a TensorFlow model on several GPUs at once.
 
+   .. grid-item-card:: Distributed PyTorch
+      :link: pytorch_ddp
+      :link-type: doc
+
+      Train on several GPUs and several nodes with DDP and torchrun.
+
    .. grid-item-card:: DeepXDE
       :link: deepxde
       :link-type: doc
@@ -94,6 +100,7 @@ Found a typo, a broken command or a missing topic? :doc:`contributing` explains 
    grid5000
    hf_datasets
    horovod
+   pytorch_ddp
 
 .. toctree::
    :hidden:
