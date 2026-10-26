@@ -2,3 +2,4 @@ sphinx
 furo
 sphinx-design
 sphinx-copybutton
+sphinxext-opengraph
