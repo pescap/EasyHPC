@@ -2,149 +2,139 @@
 System Administration
 =====================
 
+This page covers the everyday tools you need on a Linux server: the shell, remote connections, GPUs, Python environments and containers.
 
 
 Linux command line for beginners
 --------------------------------
 
-Here goes a short list of useful commands:
-
-
 File commands
-***************
+*************
+
 ::
 
-    $ ls                     # Show current directory
-    $ cd                     # Go to the root directory
-    $ cd folder_example      # Change directory to 'folder_example'
-    $ cd ..                  # Go back to the previous directory
-    $ mkdir folder_example   # Create a new folder named 'folder_example'
-    $ rm file_name           # Delete file named 'file_name'
-    $ rm -rf folder_example  # Delete non empty folder named <folder_example>
-    $ pwd                    # Show the current path
-    $ cat file_name          # Show the content of file named 'file_name'
+    $ ls                     # List the files of the current directory
+    $ cd                     # Go to your home directory
+    $ cd folder_example      # Enter the directory folder_example
+    $ cd ..                  # Go to the parent directory
+    $ pwd                    # Print the path of the current directory
+    $ mkdir folder_example   # Create the directory folder_example
+    $ cat file_name          # Print the content of file_name
+    $ rm file_name           # Delete file_name
+    $ rm -r folder_example   # Delete folder_example and everything inside it
+
+``rm`` does not use a trash bin: deleted files cannot be recovered.
 
 
-System info
-*****************
+System information
+******************
+
 ::
 
-    $ htop                   # Check memory usage and processes
-    $ df                     # Show disk usage
+    $ htop                   # Show processes, CPU and memory usage (press q to quit)
+    $ df -h                  # Show the free space of each disk
+    $ du -sh folder_example  # Show the size of folder_example
     $ date                   # Show the current date and time
 
 
+Remote servers and Jupyter
+--------------------------
 
-Cluster and Jupyter Notebook
-----------------------------
+Connect via SSH to the server ``server_address`` with the user name ``user``::
 
-Connect via SSH to ``ip_address`` with username ``user``: ::
+    $ ssh user@server_address
 
-    $ ssh user@ip_address
+To use Jupyter on the server from the browser of your computer, connect with port forwarding on port ``8888``::
 
-Connect via SSH to the server, enabling port forwarding with port ``8888`` using: ::
+    $ ssh -L 8888:localhost:8888 user@server_address
 
-    $ ssh -L 8888:localhost:8888 user@ip_address
+Once logged into the server, start Jupyter without opening a browser there::
 
-Once logged into the server, simply run: ::
+    $ jupyter lab --no-browser --port 8888
 
-    $ jupyter-notebook
+Jupyter prints a URL starting with ``http://localhost:8888``. Copy and paste it into the browser of your computer.
 
-Then, copy-paste the url to run the jupyter-notebook in your bowser. Sometimes, the port-forwarding keeps working albeit having closed the jupyter session. You can check port forwarding by running::
+Sometimes the port stays in use after you close Jupyter. To see which process holds it::
 
-    $ lsof -i:8888
+    $ lsof -i :8888
 
-This command shows you the active process identities ``PID``. To kill the process, type: ::
+The second column of the output is the process identifier, ``PID``. Stop the process with::
 
-    $ kill -9 PID
+    $ kill PID
 
-with ``PID`` the process number.
-
+If the process does not stop, force it with ``kill -9 PID``.
 
 
 GPU programming
 ---------------
 
-To check GPUs usage, run::
+To check the GPUs of the machine, their memory and the processes using them, run::
 
     $ nvidia-smi
 
-Available GPUs are defined with global variable ``CUDA_VISIBLE_DEVICES``. To run a script ``my_program`` with specific GPUs (e,g, ``0,2``), run::
+The environment variable ``CUDA_VISIBLE_DEVICES`` sets which GPUs a program can see. To run a script ``my_program.py`` on GPUs ``0`` and ``2`` only::
 
-    $ CUDA_VISIBLE_DEVICES="0,2" my_program
+    $ CUDA_VISIBLE_DEVICES=0,2 python my_program.py
 
-Example in CPU mode (no visible GPUs), to run a python script called ``dl.py``::
+To run it on the CPU only, hide all the GPUs::
 
-    $ CUDA_VISIBLE_DEVICES="" python dl.py
+    $ CUDA_VISIBLE_DEVICES="" python my_program.py
 
 
+Conda
+-----
 
-Anaconda
---------
-Conda is a package and environment management system, allowing to easily find and install packages. It is very useful to work with different Python packages/libraries versions, and to avoid compatibility issues.
+Conda manages packages and environments. Each environment has its own Python version and packages, which avoids conflicts between projects.
 
-1. Installing Anaconda.
-    Unix:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_ (copy the link of download)::
 
-            $ curl -O donwload_link
+Install conda
+*************
 
-       2. Run::
+`Miniforge <https://github.com/conda-forge/miniforge>`__ is a minimal conda installer that uses the free conda-forge channel. On Linux and macOS, download and run the installer for your system::
 
-            $ bash <name of file downloaded>.sh
+    $ curl -L -O "https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-$(uname)-$(uname -m).sh"
+    $ bash Miniforge3-$(uname)-$(uname -m).sh
 
-       3. Follow the instructions on the installer screen.
-       4. **Remember** to type **yes**, at the end of everything, this will add **Conda** to **PATH**.
-       5. Restart your terminal window.
+Follow the instructions of the installer. When it asks whether to initialize conda, answer ``yes``, then restart your terminal. If the ``conda`` command is not found afterwards, run::
 
-    MacOS:
-       1. Download the latest version of `Conda <https://www.anaconda.com/products/individual>`_ (copy the link of download)::
-            
-            $ curl -O donwload_link
-            
-       2. Run::
+    $ ~/miniforge3/bin/conda init
 
-            $ bash <name of file downloaded>.sh
+and restart the terminal again.
 
-       3. Follow the instructions on the installer screen.
-       4. **Remember** to type **yes**, at the end of everything, this will add **Conda** to **PATH**.
-       5. Restart the terminal window.
 
-    **Note**: If conda command doesn't work (skipping step 4), run::
-        
-        $ conda init
+Manage environments
+*******************
 
-2. Creating/Managing your environments.
-    1. To create an environment with a specific version::
-        
-        $ conda create -n new_env python=<version_number>
+Create an environment called ``new_env`` with a given Python version::
 
-    2. Checking the list of your environments::
-        
-        $ conda env list
+    $ conda create -n new_env python=3.12
 
-    3. Activating/Deactivating an environment::
-        
-        $ conda activate/deactivate new_env
+List your environments::
 
-    4. Install a package::
-    
-        $ conda install name_of_the_package
-        or
-        $ pip install name_of_the_package
+    $ conda env list
 
-- Remember that any packages/libraries installed on a specific conda environment are retained there, environments do not share installed packages.
-- If you want to know more about Anaconda, you can go to their official documentation `website <https://docs.conda.io/projects/conda/en/latest/index.html>`_.
+Activate the environment, and deactivate it when you are done::
 
+    $ conda activate new_env
+    $ conda deactivate
+
+Install a package in the active environment, with conda or with pip::
+
+    $ conda install numpy
+    $ pip install numpy
+
+Packages installed in an environment are only available in that environment. See the `conda documentation <https://docs.conda.io/projects/conda/en/latest/index.html>`__ for more.
 
 
 Docker
 ------
- 
-To run a DeepXDE container, run: ::
 
-    $ nvidia-docker run -v $(pwd):/root/shared -w "/root/shared" -p 8888:8888 pescapil/deepxde:latest
- 
-To use a forked version of DeepXDE from inside the Docker, open a Terminal windows and set the ``PYTHONPATH`` adequately using::
+Docker runs software inside containers that ship with all their dependencies. With the `NVIDIA Container Toolkit <https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html>`__ installed, containers can use the GPUs of the machine.
 
-    $ export PYTHONPATH=$PYTHONPATH:path_to_deepxde
+To start a DeepXDE container with all the GPUs, the current directory mounted in ``/root/shared`` and Jupyter's port forwarded::
+
+    $ docker run --gpus all -v $(pwd):/root/shared -w /root/shared -p 8888:8888 pescapil/deepxde:latest
+
+To use your own copy of DeepXDE inside the container instead of the installed one, add it to the ``PYTHONPATH``::
+
+    $ export PYTHONPATH=$PYTHONPATH:/root/shared/deepxde
