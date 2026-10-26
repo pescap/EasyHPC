@@ -1,30 +1,32 @@
 # EasyHPC
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2cb491b027e44d519e34ffd5116ec902)](https://www.codacy.com/gh/pescap/EasyHPC/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pescap/EasyHPC&amp;utm_campaign=Badge_Grade)
 [![Documentation Status](https://readthedocs.org/projects/easyhpc/badge/?version=latest)](https://easyhpc.readthedocs.io/en/latest/?badge=latest)
-[![License](https://img.shields.io/github/license/lululxvi/deepxde)](https://github.com/pescap/easyhpc/blob/master/LICENSE)
+[![Docs build](https://github.com/pescap/EasyHPC/actions/workflows/docs.yml/badge.svg)](https://github.com/pescap/EasyHPC/actions/workflows/docs.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2cb491b027e44d519e34ffd5116ec902)](https://www.codacy.com/gh/pescap/EasyHPC/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=pescap/EasyHPC&amp;utm_campaign=Badge_Grade)
+[![License](https://img.shields.io/github/license/pescap/EasyHPC)](https://github.com/pescap/EasyHPC/blob/main/LICENSE)
 
-**Documentation**: [ReadTheDocs](https://easyhpc.readthedocs.io)
+A practical guide to your first High Performance Computing (HPC) project, with a focus on deep learning and physics-informed neural networks.
 
-EasyHPC is a thorough documentation whose purpose is to allow anyone to **collaborate on High Performance Computing (HPC) projects**.
-HPC requires mastering a wide range of independent fields (see items below). 
+Read it at **[easyhpc.readthedocs.io](https://easyhpc.readthedocs.io)**.
 
-Nonetheless, nothing is impossible, do not discourage yourself! 
+## What you will learn
 
-If you follow the guidelines, you will grasp the main concepts to run HPC experiments, especially for Deep Learning (DL) purposes. 
+- GitHub: forks, branches, issues and pull requests
+- CI/CD: reStructuredText, Sphinx, GitHub Actions and Read the Docs
+- System administration: the Linux shell, SSH, Jupyter on a remote server, GPUs, conda and Docker
+- Distributed deep learning with Horovod
+- Physics-informed neural networks with DeepXDE
+- Neural network theory
 
-EasyHPC intended to boost the learning process by providing condensed information that encompasses the knowledge of several months. It comes with self-explanatory materials and generic commands. 
+## Contributing
 
-EasyHPC includes:
+Issues and pull requests are welcome. See the [contributing guide](https://easyhpc.readthedocs.io/en/latest/contributing.html). To build the documentation locally:
 
-    -  Github usage
-    -  Collaborative code development
-    -  CI/CD
-    -  System Administration
-    -  Docker
-    -  HPC
-    -  GPU Computing
-    -  Deep Learning
-    -  Physics-informed Neural Networks
+```bash
+pip install -r requirements.txt
+sphinx-build -b html docs/source docs/build/html
+```
 
-This code was created for an Undergraduate research course at Universidad Adolfo Ibáñez, Santiago, Chile.
+## Credits
+
+EasyHPC started in 2022 as the shared documentation of an undergraduate research course at Universidad Adolfo Ibáñez, Santiago, Chile. See the [credits](https://easyhpc.readthedocs.io/en/latest/credits.html) for the people who wrote it.
