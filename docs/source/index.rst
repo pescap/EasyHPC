@@ -22,6 +22,7 @@ The tree follows the natural structure of the documentation.
   github
   cicd
   sysadmin
+  cluster
   horovod
   deepxde
   nn
