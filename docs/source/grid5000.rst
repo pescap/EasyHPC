@@ -1,0 +1,109 @@
+=========
+Grid'5000
+=========
+
+`Grid'5000 <https://www.grid5000.fr>`__ is a French testbed for research in computer science, with many CPU and GPU nodes spread over several sites (Lille, Lyon, Nancy, Rennes, Grenoble and others). It works like any cluster: you prepare your work on a frontend and ask a scheduler for nodes. The scheduler is `OAR <https://oar.imag.fr>`__.
+
+This page summarizes the official `Getting Started <https://www.grid5000.fr/w/Getting_Started>`__ tutorial. Read it for the details.
+
+
+Get an account
+--------------
+
+Academics working in France (and at the Luxembourg and Louvain sites) can request an account directly. Researchers outside France can get one through an active, formal collaboration with a team that already uses Grid'5000. In both cases, use the `account request form <https://www.grid5000.fr/w/Grid5000:Get_an_account>`__ and describe your project. When you have an account, upload your public SSH key in the account management interface.
+
+Before using the platform, read the `usage policy <https://www.grid5000.fr/w/Grid5000:UsagePolicy>`__. It sets limits on how many resources you may reserve and for how long.
+
+
+Connect
+-------
+
+Grid'5000 is reached through an access machine, and then a frontend on each site::
+
+    $ ssh login@access.grid5000.fr
+    $ ssh nancy
+
+Replace ``login`` with your Grid'5000 user name and ``nancy`` with the site you want to use. To connect directly from your computer, add this to ``~/.ssh/config``:
+
+.. code-block:: text
+
+    Host g5k
+      User login
+      Hostname access.grid5000.fr
+      ForwardAgent no
+
+    Host *.g5k
+      User login
+      ProxyCommand ssh g5k -W "$(basename %h .g5k):%p"
+      ForwardAgent no
+
+Then ``ssh nancy.g5k`` opens a shell on the Nancy frontend.
+
+
+Storage
+-------
+
+Each site has its own home directory, shared by the frontend and the nodes of that site, and not by the other sites. The default quota is 25 GB per site.
+
+.. warning::
+
+    Grid'5000 does not back up the home directories. Keep a copy of your code and results elsewhere.
+
+To copy a file from your computer to your home in Nancy::
+
+    $ scp my_file.py login@access.grid5000.fr:nancy/
+
+
+Reserve nodes with OAR
+----------------------
+
+All the commands below run on a site frontend.
+
+
+Interactive jobs
+****************
+
+``oarsub -I`` opens a shell on a reserved node::
+
+    $ oarsub -l core=1 -I                       # One core
+    $ oarsub -l host=1 -I                       # A full node
+    $ oarsub -l host=1/core=8,walltime=2 -I     # 8 cores on one node for 2 hours
+    $ oarsub -l gpu=1 -I                        # One GPU
+
+``walltime`` is the maximum duration of the job, in the format ``hours``, ``hours:minutes`` or ``hours:minutes:seconds``. On some sites, such as Nancy, GPUs are only available in the production queue::
+
+    $ oarsub -q production -l gpu=1 -I
+
+
+Batch jobs
+**********
+
+Write a script with the resources in ``#OAR`` lines, for example ``train_oar.sh``:
+
+.. code-block:: bash
+
+    #!/bin/bash
+    #OAR -q production
+    #OAR -l host=1/gpu=1,walltime=3:00:00
+    #OAR -O OAR_%jobid%.out
+    #OAR -E OAR_%jobid%.err
+
+    source ~/envs/my_env/bin/activate
+    python train.py
+
+Make it executable and submit it::
+
+    $ chmod u+x train_oar.sh
+    $ oarsub -S ./train_oar.sh
+
+
+Follow your jobs
+****************
+
+::
+
+    $ oarstat -u                    # Your jobs
+    $ oardel 12345                  # Cancel job 12345
+    $ oarwalltime 12345 +1:30       # Ask for 1 hour 30 more, if the resources are free
+
+The `hardware pages <https://www.grid5000.fr/w/Hardware>`__ list the nodes of each site, with their CPUs and GPUs.
