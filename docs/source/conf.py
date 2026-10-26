@@ -22,5 +22,5 @@ copybutton_prompt_text = "$ "
 
 ogp_site_url = "https://easyhpc.readthedocs.io/en/latest/"
 ogp_image = "_static/easyhpc-preview.png"
-ogp_image_alt = "EasyHPC: a practical guide to High Performance Computing for students joining a research group"
+ogp_image_alt = "EasyHPC: a practical guide to High Performance Computing"
 ogp_custom_meta_tags = ['<meta name="twitter:card" content="summary_large_image" />']
