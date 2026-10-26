@@ -41,6 +41,12 @@ If you are new to all of this, read the pages in the order shown. If you already
 
       SSH configuration, storage, modules, Apptainer and Slurm jobs.
 
+   .. grid-item-card:: Grid'5000
+      :link: grid5000
+      :link-type: doc
+
+      Get an account and reserve CPU and GPU nodes on the French testbed.
+
    .. grid-item-card:: Horovod
       :link: horovod
       :link-type: doc
@@ -79,6 +85,7 @@ Found a typo, a broken command or a missing topic? :doc:`contributing` explains 
 
    sysadmin
    cluster
+   grid5000
    horovod
 
 .. toctree::
