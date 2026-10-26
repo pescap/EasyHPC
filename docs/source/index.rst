@@ -47,6 +47,12 @@ If you are new to all of this, read the pages in the order shown. If you already
 
       Get an account and reserve CPU and GPU nodes on the French testbed.
 
+   .. grid-item-card:: Hugging Face datasets
+      :link: hf_datasets
+      :link-type: doc
+
+      Load public datasets on a cluster, with the cache on scratch and offline compute nodes.
+
    .. grid-item-card:: Horovod
       :link: horovod
       :link-type: doc
@@ -86,6 +92,7 @@ Found a typo, a broken command or a missing topic? :doc:`contributing` explains 
    sysadmin
    cluster
    grid5000
+   hf_datasets
    horovod
 
 .. toctree::
