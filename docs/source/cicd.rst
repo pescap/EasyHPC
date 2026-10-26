@@ -154,8 +154,8 @@ EasyHPC's `docs.yml <https://github.com/pescap/EasyHPC/blob/main/.github/workflo
       build:
         runs-on: ubuntu-latest
         steps:
-          - uses: actions/checkout@v4
-          - uses: actions/setup-python@v5
+          - uses: actions/checkout@v7
+          - uses: actions/setup-python@v7
             with:
               python-version: "3.12"
           - run: pip install -r requirements.txt
