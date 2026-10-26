@@ -22,6 +22,7 @@ The tree follows the natural structure of the documentation.
   github
   cicd
   sysadmin
+  grid5000
   horovod
   deepxde
   nn
